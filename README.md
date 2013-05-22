@@ -8,17 +8,63 @@ Add this line to your application's Gemfile:
 
     gem 'datetimepicker-rails'
 
+Or install it yourself from the latest build as:
+
+    gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
+
 And then execute:
 
-    $ bundle
+    $ bundle install
 
-Or install it yourself as:
+## Configuration
 
-    $ gem install datetimepicker-rails
+Add this line to app/assets/stylesheets/application.css
 
-## Usage
+``` css
+ *= require bootstrap-datetimepicker
+```
 
-TODO: Write usage instructions here
+Add this line to app/assets/javascripts/application.js
+
+``` javascript
+//= require bootstrap-datetimepicker
+```
+
+You can fine tune the included files to suit your needs.
+
+```javascript
+//= require bootstrap-datetimepicker/core
+//= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.hu.js
+```
+
+## Using datetimepicker-rails
+
+Just call datetimepicker() with any selector.
+
+```html
+<input class="datetimepicker" type="text" >
+
+<script type="text/javascript">
+    $('.datetimepicker').datetimepicker({
+        format: 'yyyy/MM/dd hh:mm',
+        language: 'hu',
+        autoclose: true
+    });
+</script>
+```
+
+```Simple Form
+<%= f.input :start_date_time, :as => :datetime_picker %>
+
+<script type="text/javascript">
+    $('.datetimepicker').datetimepicker({
+        format: 'yyyy/MM/dd hh:mm',
+        language: 'hu',
+        autoclose: true
+    });
+</script>
+```
+
 
 ## Contributing
 
