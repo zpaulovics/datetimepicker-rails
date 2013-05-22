@@ -11,9 +11,10 @@ task :update_assets do
   system('git submodule update') unless File.exist?('bootstrap-datetimepicker/README.md')
 
   Rake.rake_output_message 'Generating javascripts'
-  FileUtils.mkdir_p "vendor/assets/javascripts"
-  FileUtils.cp_r Dir["bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"], "vendor/assets/javascripts/bootstrap-datetimepicker/core.js"
-  FileUtils.cp_r Dir["bootstrap-datetimepicker/src/js/locales/*"], "vendor/assets/javascripts/bootstrap-datetimepicker/locales/"
+  FileUtils.mkdir_p "vendor/assets/javascripts/bootstrap-datetimepicker"
+  FileUtils.cp "bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js", "vendor/assets/javascripts/bootstrap-datetimepicker/core.js"
+  FileUtils.mkdir_p "vendor/assets/javascripts/bootstrap-datetimepicker/locales"
+  FileUtils.cp Dir["bootstrap-datetimepicker/src/js/locales/*"], "vendor/assets/javascripts/bootstrap-datetimepicker/locales/"
 
   Rake.rake_output_message 'Generating stylesheets'
   FileUtils.mkdir_p "vendor/assets/stylesheets"
