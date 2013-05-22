@@ -1,4 +1,4 @@
-# Simple Form and Bootstrap DateTimepicker for Rails
+# SimpleForm & Bootstrap DateTimepicker for Rails
 
 This gem packages the bootstrap-datetimepicker for Rails 3.1+ asset pipeline, and creates the Simple Form custom fields for your project
 
@@ -53,7 +53,7 @@ Just call datetimepicker() with any selector.
 </script>
 ```
 
-```Simple Form
+```Simple_Form
 <%= f.input :start_date_time, :as => :datetime_picker %>
 
 <script type="text/javascript">
