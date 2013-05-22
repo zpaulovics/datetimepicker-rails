@@ -3,12 +3,12 @@ require "bundler/gem_tasks"
 
 desc "Clean the vendor directory"
 task :clean do
-  rm_rf 'vendor'
+  FileUtils.rm_rf 'vendor'
 end
 
 desc "Update assets in vendor directory"
 task :update_assets do
-  system('git submodule update --init') unless File.exist?('bootstrap-datetimepicker/README.md')
+  system('git submodule update') unless File.exist?('bootstrap-datetimepicker/README.md')
 
   Rake.rake_output_message 'Generating javascripts'
   FileUtils.mkdir_p "vendor/assets/javascripts"
