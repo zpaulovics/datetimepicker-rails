@@ -41,6 +41,8 @@ You can fine tune the included files to suit your needs.
 
 Just call datetimepicker() with any selector.
 
+### HTML
+
 ```html
 <input class="datetimepicker" type="text" >
 
@@ -53,7 +55,9 @@ Just call datetimepicker() with any selector.
 </script>
 ```
 
-```Simple_Form
+### Simple_Form
+
+```html
 <%= f.input :start_date_time, :as => :datetime_picker %>
 
 <script type="text/javascript">
