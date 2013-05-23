@@ -1,6 +1,6 @@
 require 'securerandom'
 
-module Datetimepicker_rails
+module DatetimepickerRails
   module Generators
     class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path("../../templates/inputs", __FILE__)
