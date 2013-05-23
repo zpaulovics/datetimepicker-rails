@@ -12,10 +12,10 @@ module DatetimepickerRails
             File.exist?('app/inputs/datetime_picker_input.rb')
       end
 
-      #def copy_date_picker
-      #  template "date_picker_input.rb", "app/inputs/date_picker_input.rb" unless
-      #      File.exist?('app/inputs/date_picker_input.rb')
-      #end
+      def copy_date_picker
+        template "date_picker_input.rb", "app/inputs/date_picker_input.rb" unless
+            File.exist?('app/inputs/date_picker_input.rb')
+      end
 
       def copy_time_picker
         template "time_picker_input.rb", "app/inputs/time_picker_input.rb" unless
