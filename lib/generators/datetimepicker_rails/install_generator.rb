@@ -7,17 +7,17 @@ module DatetimepickerRails
 
       desc "Creates the Simple form custom fields definition for date, datetime and time pickers."
 
+      def copy_datetime_picker
+        template "datetime_picker_input.rb", "app/inputs/datetime_picker_input.rb" unless
+            File.exist?('app/inputs/datetime_picker_input.rb')
+      end
+
       #def copy_date_picker
       #  template "date_picker_input.rb", "app/inputs/date_picker_input.rb" unless
       #      File.exist?('app/inputs/date_picker_input.rb')
       #end
 
-      def copy_date_picker
-        template "datetime_picker_input.rb", "app/inputs/datetime_picker_input.rb" unless
-            File.exist?('app/inputs/datetime_picker_input.rb')
-      end
-
-      def copy_date_picker
+      def copy_time_picker
         template "time_picker_input.rb", "app/inputs/time_picker_input.rb" unless
             File.exist?('app/inputs/time_picker_input.rb')
       end
