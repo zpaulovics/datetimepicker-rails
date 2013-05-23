@@ -11,10 +11,11 @@ task :update_assets do
   system('git submodule update') unless File.exist?('bootstrap-datetimepicker/README.md')
 
   Rake.rake_output_message 'Generating javascripts'
-  FileUtils.mkdir_p "vendor/assets/javascripts/bootstrap-datetimepicker"
-  FileUtils.cp "bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js", "vendor/assets/javascripts/bootstrap-datetimepicker/core.js"
   FileUtils.mkdir_p "vendor/assets/javascripts/bootstrap-datetimepicker/locales"
-  FileUtils.cp Dir["bootstrap-datetimepicker/src/js/locales/*"], "vendor/assets/javascripts/bootstrap-datetimepicker/locales/"
+  FileUtils.cp_r "bootstrap-datetimepicker/src/js/*", "vendor/assets/javascripts/bootstrap-datetimepicker"
+  FileUtils.mv "vendor/assets/javascripts/bootstrap-datetimepicker/bootstrap-datetimepicker.js",
+               "vendor/assets/javascripts/bootstrap-datetimepicker/core.js"
+  FileUtils.cp "lib/generators/templates/js/*", "vendor/assets/javascripts/bootstrap-datetimepicker"
 
   Rake.rake_output_message 'Generating stylesheets'
   FileUtils.mkdir_p "vendor/assets/stylesheets"
@@ -24,13 +25,8 @@ task :update_assets do
   end
 end
 
-desc "Update custom field definition in app/input directory"
-task :update_fields do
-
-end
-
 desc "Clean and update"
-task default: [:clean, :update_assets, :update_fields]
+task default: [:clean, :update_assets]
 
 task build: :default
 
