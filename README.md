@@ -17,7 +17,7 @@ The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git
 
 Add this line to your application's Gemfile:
 
-    gem 'datetimepicker-rails' (Not yet released, use the master branch on git)
+    gem 'datetimepicker-rails'
 
 Or install it yourself from the latest build as:
 
