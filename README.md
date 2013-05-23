@@ -85,11 +85,10 @@ Just call datetimepicker() with any selector.
 ```
 
 
-The above scripts will be included by require bootstrap-datetimepicker/pickers accordingly
+The scripts below will be included by require bootstrap-datetimepicker/pickers accordingly
 
 ```javascript
-<script type="text/javascript">
-    $('.datetimepicker').datetimepicker({
+<   $('.datetimepicker').datetimepicker({
         format: 'yyyy/MM/dd hh:mm',
         language: 'hu',
         autoclose: true
@@ -108,8 +107,6 @@ The above scripts will be included by require bootstrap-datetimepicker/pickers a
         pickTime: false,
         autoclose: true
     });
-
-</script>
 ```
 
 ### For more datails of usage
