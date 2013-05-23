@@ -18,9 +18,10 @@
 #  end
 #end
 
-class XdatetimePickerInput < SimpleForm::Inputs::StringInput
+class DatetimePickerInput < SimpleForm::Inputs::StringInput
   def input
     value = object.send(attribute_name) if object.respond_to? attribute_name
+    # text_field_options['data-date-format'] = I18n.t('date.datepicker')
     input_html_options[:value] ||= I18n.localize(value, :format => '%Y/%m/%d %R') if value.present?
     input_html_classes << "datetimepicker"
 
