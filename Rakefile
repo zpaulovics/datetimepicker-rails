@@ -28,5 +28,5 @@ end
 desc "Clean and update"
 task default: [:clean, :update_assets]
 
-task build: :default
+task build: [:clean, :update_assets]
 
