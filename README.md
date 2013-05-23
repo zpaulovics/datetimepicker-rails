@@ -98,7 +98,7 @@ Just call datetimepicker() with any selector.
 <%= f.input :begin-at, :as => :time_picker %>
 ```
 
-The scripts below will be included, when you use require bootstrap-datetimepicker/pickers. If you
+The scripts below will be included, when you use the "require bootstrap-datetimepicker/pickers". If you
 need different activation scripts, ignore the //= require bootstrap-datetimepicker/pickers line in
 app/assets/javascripts/application.js (Sorry, but could not find a way to inject the locale to the
 javascript and the language specification does not work in the conponet tag in this version
@@ -107,17 +107,20 @@ of Boostrap DatetimePicker).
 ```javascript
 <   $('.datetimepicker').datetimepicker({
         language: 'hu',
+		weekStart: 1,
         autoclose: true
     });
 
     $('.timepicker').datetimepicker({
         language: 'hu',
+		weekStart: 1,
         pickDate: false,
         autoclose: true
     });
 
     $('.datepicker').datetimepicker({
         language: 'hu',
+		weekStart: 1,
         pickTime: false,
         autoclose: true
     });
