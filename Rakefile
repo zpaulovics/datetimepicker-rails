@@ -12,10 +12,10 @@ task :update_assets do
 
   Rake.rake_output_message 'Generating javascripts'
   FileUtils.mkdir_p "vendor/assets/javascripts/bootstrap-datetimepicker/locales"
-  FileUtils.cp_r "bootstrap-datetimepicker/src/js/*", "vendor/assets/javascripts/bootstrap-datetimepicker"
+  FileUtils.cp_r Dir["bootstrap-datetimepicker/src/js/*"], "vendor/assets/javascripts/bootstrap-datetimepicker"
   FileUtils.mv "vendor/assets/javascripts/bootstrap-datetimepicker/bootstrap-datetimepicker.js",
                "vendor/assets/javascripts/bootstrap-datetimepicker/core.js"
-  FileUtils.cp "lib/generators/templates/js/*", "vendor/assets/javascripts/bootstrap-datetimepicker"
+  FileUtils.cp_r Dir["lib/generators/templates/js/*"], "vendor/assets/javascripts/bootstrap-datetimepicker"
 
   Rake.rake_output_message 'Generating stylesheets'
   FileUtils.mkdir_p "vendor/assets/stylesheets"
