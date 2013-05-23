@@ -18,7 +18,7 @@
 #  end
 #end
 
-class DatetimePickerInput < SimpleForm::Inputs::StringInput
+class TimePickerInput < SimpleForm::Inputs::StringInput
   def input
     value = object.send(attribute_name) if object.respond_to? attribute_name
     input_html_options[:value] ||= I18n.localize(value, :format => '%R') if value.present?
