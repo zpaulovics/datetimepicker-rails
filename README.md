@@ -82,7 +82,6 @@ Just call datetimepicker() with any selector.
 
 <script type="text/javascript">
     $('.datetimepicker').datetimepicker({
-        format: 'yyyy/MM/dd hh:mm',
         language: 'hu',
         autoclose: true
     });
@@ -101,29 +100,41 @@ Just call datetimepicker() with any selector.
 
 The scripts below will be included by require bootstrap-datetimepicker/pickers accordingly. If you
 need different activation scripts, ignore the //= require bootstrap-datetimepicker/pickers line in
-app/assets/javascripts/application.js
+app/assets/javascripts/application.js Sorry, but could not find a way to inject the locale to the
+javascript and the language specification does not work in the conponet specification in this version
+of Boostrap DatetimePicker.
 
 ```javascript
 <   $('.datetimepicker').datetimepicker({
-        format: 'yyyy/MM/dd hh:mm',
         language: 'hu',
         autoclose: true
     });
 
     $('.timepicker').datetimepicker({
-        format: 'hh:mm',
         language: 'hu',
         pickDate: false,
         autoclose: true
     });
 
     $('.datepicker').datetimepicker({
-        format: 'yyyy/MM/dd',
         language: 'hu',
         pickTime: false,
         autoclose: true
     });
 ```
+
+### Date and time formating
+
+Specify your intended date and time formats in your config/locales/en.yml or releted language file as follows:
+
+    en:
+      datepicker:
+        dformat: '%d/%m/%Y'        # display format of the date
+        pformat: 'dd/MM/yyyy'      # picking format of the date
+      timepicker:
+        dformat: '%R'              # display format of the time
+        pformat: 'hh:mm'           # picking format of the time
+
 
 ### For more details of usage
 
