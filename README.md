@@ -9,8 +9,8 @@ The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git
 
 ### Features
 
-    - Setup the vendor directory (javascripts, stylesheets)
-    - Intall the custom fields for Simple Form
+    - Prepares the vendor directory (javascripts, stylesheets)
+    - Install the custom fields for Simple Form
 
 
 ### Installation
@@ -51,9 +51,24 @@ You can fine tune the included files to suit your needs.
 
 ### Calling the generator
 
-After you install datetimepicker and add it to your Gemfile, you need to run the generator:
+After you install datetimepicker and add it to your Gemfile, you may need to run the generator.
+The generate will copy the custom fields definitions for Simple Form in your project. There are 3
+custom field definition. The generator look at the app/inputs directory of your project and copy
+only those custom field definition that is not already exists in your project. If you have a custom
+input with the same name the generator does not overwrite it.
 
-    $ rails generate datetimepicker:install
+To run the generator is optional, it is up to you to write your own definitions for Simle Form if you
+need it at all. You do not need to call the install
+
+The datetimepicker-rails using the following custom field definitions:
+
+    datetime_picker_input.rb    # for fields with :as => :datetime_picker
+    date_picker_input.rb        # for fields with :as => :date_picker
+    time_picker_input.rb        # for fields with :as => :time_picker
+
+To run the generator use the following command:
+
+    $ rails generate datetimepicker_rails:install
 
 
 ### Using datetimepicker-rails
@@ -79,13 +94,14 @@ Just call datetimepicker() with any selector.
 ```html
 <%= f.input :start_date_time, :as => :datetime_picker %>
 
-<%= f.input :begin-at, :as => :time_picker %>
-
 <%= f.input :closing_date, :as => :date_picker %>
+
+<%= f.input :begin-at, :as => :time_picker %>
 ```
 
-
-The scripts below will be included by require bootstrap-datetimepicker/pickers accordingly
+The scripts below will be included by require bootstrap-datetimepicker/pickers accordingly. If you
+need different activation scripts, ignore the //= require bootstrap-datetimepicker/pickers line in
+app/assets/javascripts/application.js
 
 ```javascript
 <   $('.datetimepicker').datetimepicker({
@@ -109,7 +125,7 @@ The scripts below will be included by require bootstrap-datetimepicker/pickers a
     });
 ```
 
-### For more datails of usage
+### For more details of usage
 
 See the excellent demo provided by plugin's author - [@tarruda](https://github.com/tarruda) [here](http://tarruda.github.com/bootstrap-datetimepicker/).
 
