@@ -17,9 +17,9 @@ The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git
 
 Add this line to your application's Gemfile:
 
-    gem 'datetimepicker-rails'
+    # SORRY! But the 'datetimepicker-rails' name in RubyGems repo already taken.
 
-Or install it yourself from the latest build as:
+So install it from the git by:
 
     gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 
@@ -101,7 +101,7 @@ Just call datetimepicker() with any selector.
 The scripts below will be included, when you use require bootstrap-datetimepicker/pickers. If you
 need different activation scripts, ignore the //= require bootstrap-datetimepicker/pickers line in
 app/assets/javascripts/application.js (Sorry, but could not find a way to inject the locale to the
-javascript and the language specification does not work in the conponet specification in this version
+javascript and the language specification does not work in the conponet tag in this version
 of Boostrap DatetimePicker).
 
 ```javascript
