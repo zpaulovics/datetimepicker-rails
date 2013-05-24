@@ -10,7 +10,7 @@ The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git
 ### Features
 
     - Prepares the vendor directory (javascripts, stylesheets)
-    - Install the custom fields for Simple Form
+    - Installs the custom fields for Simple Form
 
 
 ### Installation
@@ -52,8 +52,8 @@ You can fine tune the included files to suit your needs.
 ### Calling the generator
 
 After you install datetimepicker and add it to your Gemfile, you may need to run the generator.
-The generator will copy the custom field definitions for Simple Form in your project. There are 3
-custom field definitions. The generator look at the app/inputs directory of your project and copy
+The generator will create the custom field definitions for Simple Form in your project. There are 3
+custom field definitions. The generator look at the app/inputs directory of your project and create
 only those custom field definitions that are not already exists in your project. If you have a custom
 input with the same name the generator does not overwrite it.
 
@@ -99,12 +99,10 @@ Just call datetimepicker() with any selector.
 
 The scripts below will be included, when you use the "require bootstrap-datetimepicker/pickers". If you
 need different activation scripts, ignore the //= require bootstrap-datetimepicker/pickers line in
-app/assets/javascripts/application.js (Sorry, but could not find a way to inject the locale to the
-javascript and the language specification does not work in the conponet tag in this version
-of Boostrap DatetimePicker).
+app/assets/javascripts/application.js.
 
 ```javascript
-<   $('.datetimepicker').datetimepicker({
+    $('.datetimepicker').datetimepicker({
         pickSeconds: false
     });
 
@@ -124,12 +122,12 @@ Specify your intended date and time formats in your config/locales/en.yml or rel
 
     en:
       datepicker:
-        dformat: '%d/%m/%Y'        # display format of the date
-        pformat: 'dd/MM/yyyy'      # picking format of the date
-        weekstart: 0               # the week starts on Sunday this is the default, can be ommited
+        dformat: '%d/%m/%Y'        # display format of the date (this is the default, can be ommited)
+        pformat: 'dd/MM/yyyy'      # picking format of the date (this is the default, can be ommited)
+        weekstart: 0               # the week starts on Sunday (this is the default, can be ommited)
       timepicker:
-        dformat: '%R'              # display format of the time
-        pformat: 'hh:mm'           # picking format of the time
+        dformat: '%R'              # display format of the time (this is the default, can be ommited)
+        pformat: 'hh:mm'           # picking format of the time (this is the default, can be ommited)
 
 
 ### For more details of usage
