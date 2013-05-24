@@ -105,18 +105,15 @@ of Boostrap DatetimePicker).
 
 ```javascript
 <   $('.datetimepicker').datetimepicker({
-        language: 'hu',
         pickSeconds: false
     });
 
     $('.timepicker').datetimepicker({
-        language: 'hu',
         pickDate: false,
         pickSeconds: false
     });
 
     $('.datepicker').datetimepicker({
-        language: 'hu',
         pickTime: false
     });
 ```
