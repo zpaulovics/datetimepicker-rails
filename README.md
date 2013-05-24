@@ -126,6 +126,7 @@ Specify your intended date and time formats in your config/locales/en.yml or rel
       datepicker:
         dformat: '%d/%m/%Y'        # display format of the date
         pformat: 'dd/MM/yyyy'      # picking format of the date
+        weekstart: 0               # the week starts on Sunday this is the default, can be ommited
       timepicker:
         dformat: '%R'              # display format of the time
         pformat: 'hh:mm'           # picking format of the time
