@@ -1,6 +1,6 @@
 ## SimpleForm & Bootstrap DateTimepicker for Rails
 
-This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and creates the Simple Form custom fields for your project
+This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and creates the Simple Form custom fields for your project.
 
 The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
 
@@ -10,7 +10,13 @@ The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git
 ### Features
 
     - Prepares the vendor directory (javascripts, stylesheets)
-    - Installs the custom fields for Simple Form
+    - Creates the custom fields for Simple Form
+    - You can use the 3 type of date & time pickers in your forms
+    - You do not need to write any javascript or CSS code
+    - The language automatically selected based on the locale
+    - You can specify the starting day of the week
+    - The format of the date and time can be specified in the config/locales
+    - Easy to install and use in your projects
 
 
 ### Installation
