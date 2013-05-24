@@ -83,7 +83,6 @@ Just call datetimepicker() with any selector.
 <script type="text/javascript">
     $('.datetimepicker').datetimepicker({
         language: 'hu',
-        autoclose: true
     });
 </script>
 ```
@@ -107,22 +106,18 @@ of Boostrap DatetimePicker).
 ```javascript
 <   $('.datetimepicker').datetimepicker({
         language: 'hu',
-		weekStart: 1,
-        autoclose: true
+        pickSeconds: false
     });
 
     $('.timepicker').datetimepicker({
         language: 'hu',
-		weekStart: 1,
         pickDate: false,
-        autoclose: true
+        pickSeconds: false
     });
 
     $('.datepicker').datetimepicker({
         language: 'hu',
-		weekStart: 1,
-        pickTime: false,
-        autoclose: true
+        pickTime: false
     });
 ```
 
