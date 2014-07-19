@@ -1,5 +1,7 @@
 ## SimpleForm & Bootstrap DateTimepicker for Rails
 
+This version assumes: Rails 4, Boostrap 3+ & SimpleForm 3.1.RC1+
+
 This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and creates the Simple Form custom fields for your project.
 
 The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
