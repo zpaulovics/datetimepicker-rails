@@ -12,7 +12,7 @@ class DatePickerInput < SimpleForm::Inputs::StringInput
 
     template.content_tag :div, class: 'input-group date datepicker' do
       input = super(wrapper_options) # leave StringInput do the real rendering
-      input += template.content_tag :span, class: 'add-on' do
+      input += template.content_tag :span, class: 'input-group-addon' do
         template.content_tag :i, '', class: 'glyphicon glyphicon-calendar',
                              data: { 'time-icon' => 'glyphicon glyphicon-time',
                                      'date-icon' => 'glyphicon glyphicon-calendar' }
