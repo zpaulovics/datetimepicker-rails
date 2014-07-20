@@ -1,4 +1,4 @@
 
 [submodule "bootstrap-datetimepicker"]
 	path = bootstrap-datetimepicker
-	url = git://github.com/Eonasdan/bootstrap-datetimepicker.git
+	url = git://github.com/zpaulovics/bootstrap-datetimepicker.git
