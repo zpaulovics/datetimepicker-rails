@@ -1,17 +1,17 @@
-$(function() {
+$(document).on('ready page:change', function() {
     $('.datepicker').datetimepicker({
         pickTime: false
     });
 });
 
-$(function() {
+$(document).on('ready page:change', function() {
     $('.datetimepicker').datetimepicker({
         pickSeconds: false
     });
 });
 
-$(function() {
-    $('.timepicker').datetimepicker({
+$(document).on('ready page:change', function() {
+    $('.time-picker').datetimepicker({
         pickDate: false,
         pickSeconds: false
     });

@@ -53,8 +53,9 @@
       this.pickTime = options.pickTime;
       this.isInput = this.$element.is('input');
       this.component = false;
-      if (this.$element.find('.input-append') || this.$element.find('.input-prepend'))
+      if ( this.$element.find('.input-append') || this.$element.find('.input-prepend'))    // Bootstrap 2
           this.component = this.$element.find('.add-on');
+      if (this.$element.find('.input-group') ) this.component = this.$element.find('.input-group-addon');  // Bootstrap 3
       this.language = options.language
       if (!this.language) {
           if (this.isInput) this.language = this.$element.data('language');
@@ -977,12 +978,12 @@
           var closed = $parent.find('.collapse:not(.in)');
 
           if (expanded && expanded.length) {
-            var collapseData = expanded.data('collapse');
-            if (collapseData && collapseData.transitioning) return;
-            expanded.collapse('hide');
-            closed.collapse('show')
-            $this.find('i').toggleClass(self.timeIcon + ' ' + self.dateIcon);
-            self.$element.find('.add-on i').toggleClass(self.timeIcon + ' ' + self.dateIcon);
+              var collapseData = expanded.data('collapse');
+              if (collapseData && collapseData.transitioning) return;
+              expanded.collapse('hide');
+              closed.collapse('show');
+              $this.find('i').toggleClass(self.timeIcon + ' ' + self.dateIcon);
+              self.$element.find('.input-group-addon i').toggleClass(self.timeIcon + ' ' + self.dateIcon);
           }
         });
       }
@@ -1158,7 +1159,7 @@
     if (pickDate && pickTime) {
       return (
         '<div class="bootstrap-datetimepicker-widget dropdown-menu">' +
-          '<ul>' +
+          '<ul >' +
             '<li' + (collapse ? ' class="collapse in"' : '') + '>' +
               '<div class="datepicker">' +
                 DPGlobal.template +
@@ -1172,6 +1173,19 @@
             '</li>' +
           '</ul>' +
         '</div>'
+//        '<ul class="bootstrap-datetimepicker-widget dropdown-menu">' +
+//          '<li' + (collapse ? ' class="collapse in"' : '') + '>' +
+//              '<div class="datepicker">' +
+//                DPGlobal.template +
+//              '</div>' +
+//          '</li>' +
+//          '<li class="picker-switch accordion-toggle"><a><span class="' + timeIcon + '"></span></a></li>' +
+//          '<li' + (collapse ? ' class="collapse"' : '') + '>' +
+//              '<div class="timepicker">' +
+//                    TPGlobal.getTemplate(is12Hours, showSeconds) +
+//              '</div>' +
+//          '</li>' +
+//        '</ul>'
       );
     } else if (pickTime) {
       return (
@@ -1260,12 +1274,12 @@
         (is12Hours ? ' data-hour-format="12"' : '') +
         '>' +
         '<tr>' +
-          '<td><a href="#" class="btn" data-action="incrementHours"><i class="icon-chevron-up"></i></a></td>' +
+          '<td><a href="#" class="btn" data-action="incrementHours"><i class="' + 'glyphicon glyphicon-chevron-up' + '"></i></a></td>' +
           '<td class="separator"></td>' +
-          '<td><a href="#" class="btn" data-action="incrementMinutes"><i class="icon-chevron-up"></i></a></td>' +
+          '<td><a href="#" class="btn" data-action="incrementMinutes"><i class="' + 'glyphicon glyphicon-chevron-up' + '"></i></a></td>' +
           (showSeconds ?
           '<td class="separator"></td>' +
-          '<td><a href="#" class="btn" data-action="incrementSeconds"><i class="icon-chevron-up"></i></a></td>': '')+
+          '<td><a href="#" class="btn" data-action="incrementSeconds"><i class="' + 'glyphicon glyphicon-chevron-up' + '"></i></a></td>': '')+
           (is12Hours ? '<td class="separator"></td>' : '') +
         '</tr>' +
         '<tr>' +
@@ -1282,12 +1296,12 @@
           '</td>' : '') +
         '</tr>' +
         '<tr>' +
-          '<td><a href="#" class="btn" data-action="decrementHours"><i class="icon-chevron-down"></i></a></td>' +
+          '<td><a href="#" class="btn" data-action="decrementHours"><i class="' + 'glyphicon glyphicon-chevron-down' + '"></i></a></td>' +
           '<td class="separator"></td>' +
-          '<td><a href="#" class="btn" data-action="decrementMinutes"><i class="icon-chevron-down"></i></a></td>' +
+          '<td><a href="#" class="btn" data-action="decrementMinutes"><i class="' + 'glyphicon glyphicon-chevron-down' + '"></i></a></td>' +
           (showSeconds ?
           '<td class="separator"></td>' +
-          '<td><a href="#" class="btn" data-action="decrementSeconds"><i class="icon-chevron-down"></i></a></td>': '') +
+          '<td><a href="#" class="btn" data-action="decrementSeconds"><i class="' + 'glyphicon glyphicon-chevron-down' + '"></i></a></td>': '') +
           (is12Hours ? '<td class="separator"></td>' : '') +
         '</tr>' +
       '</table>' +
