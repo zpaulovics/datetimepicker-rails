@@ -10,7 +10,7 @@ class TimePickerInput < SimpleForm::Inputs::StringInput
     input_html_options[:data].merge!({ format: picker_pettern, language: I18n.locale.to_s,
                                        date_weekstart: I18n.t('datepicker.weekstart', :default => 0) })
 
-    template.content_tag :div, class: 'input-group date timepicker' do
+    template.content_tag :div, class: 'input-group date time-picker' do
       input = super(wrapper_options) # leave StringInput do the real rendering
       input += template.content_tag :span, class: 'input-group-addon' do
         template.content_tag :i, '', class: 'glyphicon glyphicon-time'

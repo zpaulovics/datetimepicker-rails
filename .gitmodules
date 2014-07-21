@@ -1,4 +1,1 @@
 
-[submodule "bootstrap-datetimepicker"]
-	path = bootstrap-datetimepicker
-	url = git://github.com/zpaulovics/datetimepicker-core.git
