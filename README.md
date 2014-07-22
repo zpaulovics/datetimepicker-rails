@@ -195,6 +195,29 @@ See the documentation & excellent demos provided by plugin's author:
 2. for earlier version: [@tarruda](https://github.com/tarruda) [here](http://tarruda.github.com/bootstrap-datetimepicker/).
 
 
+### Bugfix - dataToOptions function in the bootstrap-datetimepicker.js
+
+My SimpleForm custom field implementation assumes to work the data-date-* attributes correctly in your picker.
+I find out that, there is a bug in your dataToOptions function that prevents the perfect working of this gem.
+
+Find the abowe code in the in the bootstrap-datetimepicker.js
+```
+        dataToOptions = function () {
+            var eData
+            if (picker.element.is('input')) {
+                eData = picker.element.data();
+            }
+            else {
+                eData = picker.element.data();
+            }
+```
+The else part of the if statement should be the above live:
+```
+                eData = picker.element.find('input').data();
+```
+I have already raised a pull request of this fix. As soon as it will be accepted you can ignore this hacking.
+
+
 ### Contributing
 
 1. Fork it

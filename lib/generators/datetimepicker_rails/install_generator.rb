@@ -35,8 +35,8 @@ module DatetimepickerRails
       def copy_bootstrap_datetimepicker
 
         # update the submodule to the latest source version
-        git submodule: 'init'
-        git submodule: 'update'
+        # git submodule: 'init'
+        # git submodule: 'update'
 
         repo_root = File.join(File.expand_path("../../..", File.dirname(__FILE__)),
                               "bootstrap-datetimepicker")
@@ -52,10 +52,21 @@ module DatetimepickerRails
           file_paths = Dir["**/**/*"].select { |f| File.file?(f) }
 
           file_paths.each do |file_path|
-            copy_file("#{repo_root}/src/js/#{file_path}", "#{app_root}/vendor/assets/javascripts//#{file_path}")
+            copy_file("#{repo_root}/src/js/#{file_path}", "#{app_root}/vendor/assets/javascripts/#{file_path}")
           end
         end
 
+      end
+
+      # We need to hack the bootstrap-datetimepicker.js by the time
+      # the bugfix pull request will be accepted by Eonasdan
+      def hacking_dataToOptions_bug
+        gsub_file 'vendor/assets/javascripts/bootstrap-datetimepicker.js',
+                  /else\s+\{\s+eData\s=\spicker\.element\.data\(\);\s/,
+        <<-FILE
+            else {
+              eData = picker.element.find('input').data();
+        FILE
       end
 
     end
