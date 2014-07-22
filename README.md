@@ -42,7 +42,7 @@ The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
 
 ### Installation
 
-According your needs, add one of the above lines to your application's Gemfile:
+According your needs, add one of the lines below to your application's Gemfile:
 
     gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
         :branch => 'master', :submodules => true
