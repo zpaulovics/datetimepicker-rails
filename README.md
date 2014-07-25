@@ -3,6 +3,19 @@
 This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and creates the Simple Form custom fields for your project.
 
 
+### Features
+
+    - Prepares the vendor directory (javascripts, stylesheets)
+    - Creates the custom fields for Simple Form
+    - You can use the 3 type of date & time pickers in your forms
+    - You do not need to write any javascript or CSS code
+    - The language automatically selected based on the locale
+    - You can specify all the datetime-pickers options (weekStart, minDate, manDate, disabledDates, etc.)
+    - The format of the date and time can be specified in the config/locales
+    - You can use customise the picker iconset (dafault: Glyphicon) to use Font-Awesome icons
+    - Easy to install and use in your projects
+
+
 ### Compatibility
 
 Tag v3.0.2+, eonasdan: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, it is well maintained repo)
@@ -26,18 +39,6 @@ It is very easy to install this library by using the https://github.com/derekpri
 The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git project, which was upgraded to Bootstrap 3+ compatible and refactored significantly by Eonasdan (see: https://github.com/eonasdan/bootstrap-datetimepicker.git).
 
 The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
-
-
-### Features
-
-    - Prepares the vendor directory (javascripts, stylesheets)
-    - Creates the custom fields for Simple Form
-    - You can use the 3 type of date & time pickers in your forms
-    - You do not need to write any javascript or CSS code
-    - The language automatically selected based on the locale
-    - You can specify all the datetime-pickers options (weekStart, minDate, manDate, disabledDates, etc.)
-    - The format of the date and time can be specified in the config/locales
-    - Easy to install and use in your projects
 
 
 ### Installation
@@ -100,9 +101,8 @@ custom field definitions. The generator look at the app/inputs directory of your
 only those custom field definitions that are not already exists in your project. If you have a custom
 input with the same name the generator does not overwrite it.
 
-At generating time the pickers.js and assets files will be places in your assets pipeline roots, that makes these files accessible for you out of the box.
-
-To run the generator is optional, it is up to you to write your own definitions for SimleForm.
+At generation time the pickers.js and required asset files will be places in your assets pipeline,
+that makes these files accessible for you out of the box.
 
 The datetimepicker-rails is using the following custom field definitions:
 
@@ -110,16 +110,23 @@ The datetimepicker-rails is using the following custom field definitions:
     date_picker_input.rb        # for fields with :as => :date_picker
     time_picker_input.rb        # for fields with :as => :time_picker
 
+
 To run the generator use the following command:
+```
+   $ rails generate datetimepicker_rails:install
+```
+if you want to use the default Glyphicon icons for the pickers, or use
+```
+  $ rails generate datetimepicker_rails:install Font-Awesome
+```
+to use the Font-Awesome icons for the pickers.
 
-    $ rails generate datetimepicker_rails:install
+Attention: The current version will copy the required files to your projects 'vendor/assets' directory
+(not to the gem's vendor/assets directory as before). That makes it possible to tailor by your projects
+the SimpleForm 'input' and the 'pickers.js' files to your needs at your own area. That gives you much more
+flexibility to use your preferred options of the bootstrap-datetimepicker plugin.
 
-Attention: The current version will copy the required files to your projects 'vendor/assets'
-directory (not to the gem's vendor/assets directory). That makes it possible to tailor by your
-projects the SimpleForm 'input' files and the 'pickers.js' file to your needs at your own area.
-That gives you much more flexibility.
-
-Do not be surprised, you will see a lot of language files copied to your vendor/assets/locales directory.
+All available language files will be copied to your vendor/assets/locales directory.
 
 ### Using datetimepicker-rails
 
@@ -145,9 +152,9 @@ Just call datetimepicker() with any selector.
 <%= f.input :begin-at, :as => :time_picker %>
 ```
 
-The scripts below will be included, when you use the "require bootstrap-datetimepicker/pickers". If you
-need different activation scripts, ignore the //= require bootstrap-datetimepicker/pickers line in
-app/assets/javascripts/application.js.
+The scripts below will be included, when you use the "require pickers" or "require bootstrap-datetimepicker/pickers". If you
+need different activation scripts, ignore the //= require pickers or //= require bootstrap-datetimepicker/pickers line
+(depending on your installation) in app/assets/javascripts/application.js.
 
 ```javascript
     $(document).on('ready page:change', function() {
@@ -188,19 +195,19 @@ For details of the 'pformat' attribute formatting templates, please refer to the
 
 ### For more details of usage
 
-See the documentation & excellent demos provided by plugin's author:
+See the documentation & excellent demos provided by plugin's authors:
 
-1. for current version: [@Eonasdan]https://github.com/Eonasdan [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
+1. for current version: from [@Eonasdan](https://github.com/Eonasdan) the documentation is [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
 
-2. for earlier version: [@tarruda](https://github.com/tarruda) [here](http://tarruda.github.com/bootstrap-datetimepicker/).
+2. for earlier version: from [@tarruda](https://github.com/tarruda) the documentation is [here](http://tarruda.github.com/bootstrap-datetimepicker/).
 
 
 ### Bugfix - dataToOptions function in the bootstrap-datetimepicker.js
 
-My SimpleForm custom field implementation assumes to work the data-date-* attributes correctly in your picker.
-I find out that, there is a bug in your dataToOptions function that prevents the perfect working of this gem.
+My SimpleForm custom field implementation assumes to work the data-date-* attributes correctly in the picker plugin.
+I find out that, there is a bug in the dataToOptions function that prevents the perfect working of this gem.
 
-Find the abowe code in the in the bootstrap-datetimepicker.js
+Find the below code in the in the bootstrap-datetimepicker.js
 ```
         dataToOptions = function () {
             var eData
