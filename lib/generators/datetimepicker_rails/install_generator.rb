@@ -25,7 +25,7 @@ module DatetimepickerRails
             File.exist?('app/inputs/datetime_picker_input.rb')
 
         # massage the icons
-        gsub_file('app/inputs/date_picker_input.rb', 'glyphicon glyphicon-calendar',
+        gsub_file('app/inputs/datetime_picker_input.rb', 'glyphicon glyphicon-calendar',
                   options[:custom_icons][:date]) unless icon_family == 'Glyphicon'
       end
 
@@ -34,7 +34,7 @@ module DatetimepickerRails
             File.exist?('app/inputs/date_picker_input.rb')
 
         # massage the icons
-        gsub_file('app/inputs/datetime_picker_input.rb', 'glyphicon glyphicon-calendar',
+        gsub_file('app/inputs/date_picker_input.rb', 'glyphicon glyphicon-calendar',
                   options[:custom_icons][:date]) unless icon_family == 'Glyphicon'
       end
 
@@ -129,14 +129,14 @@ $(document).on('ready page:change', function() {
 
       private
 
-        def get_icons
-          icons = "       icons: {\n"
-          icons += "          date: \'#{options[:custom_icons][:date]}\',\n"
-          icons += "          time: \'#{options[:custom_icons][:time]}\',\n"
-          icons += "          up: \'#{options[:custom_icons][:up]}\',\n"
-          icons += "          down: \'#{options[:custom_icons][:down]}\'\n"
-          icons += "      },\n"
-        end
+      def get_icons
+        icons = "       icons: {\n"
+        icons += "          date: \'#{options[:custom_icons][:date]}\',\n"
+        icons += "          time: \'#{options[:custom_icons][:time]}\',\n"
+        icons += "          up: \'#{options[:custom_icons][:up]}\',\n"
+        icons += "          down: \'#{options[:custom_icons][:down]}\'\n"
+        icons += "      },\n"
+      end
 
     end
   end
