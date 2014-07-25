@@ -12,7 +12,7 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and cre
     - The language automatically selected based on the locale
     - You can specify all the datetime-pickers options (weekStart, minDate, manDate, disabledDates, etc.)
     - The format of the date and time can be specified in the config/locales
-    - You can use customise the picker iconset (dafault: Glyphicon) to use Font-Awesome icons
+    - You can customise the picker's iconset (dafault: Glyphicon) to use the Font-Awesome icons
     - Easy to install and use in your projects
 
 
@@ -115,13 +115,13 @@ To run the generator use the following command:
 ```
    $ rails generate datetimepicker_rails:install
 ```
-if you want to use the default Glyphicon icons for the pickers, or use
+if you want to use the default Glyphicon icons for the pickers, or execute the following command
 ```
   $ rails generate datetimepicker_rails:install Font-Awesome
 ```
 to use the Font-Awesome icons for the pickers.
 
-Attention: The current version will copy the required files to your projects 'vendor/assets' directory
+The current version will copy the required files to your projects 'vendor/assets' directory
 (not to the gem's vendor/assets directory as before). That makes it possible to tailor by your projects
 the SimpleForm 'input' and the 'pickers.js' files to your needs at your own area. That gives you much more
 flexibility to use your preferred options of the bootstrap-datetimepicker plugin.

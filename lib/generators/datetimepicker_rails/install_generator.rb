@@ -59,19 +59,22 @@ module DatetimepickerRails
         vendor 'assets/javascripts/pickers.js' do <<-FILE
 $(document).on('ready page:change', function() {
   $('.datepicker').datetimepicker({
-#{icons}      pickTime: false
+#{icons}      direction: 'bottom',
+      pickTime: false
   });
 });
 
 $(document).on('ready page:change', function() {
   $('.datetimepicker').datetimepicker({
-#{icons}      pickSeconds: false
+#{icons}      direction: 'bottom',
+pickSeconds: false
   });
 });
 
 $(document).on('ready page:change', function() {
   $('.timepicker').datetimepicker({
-#{icons}      pickDate: false,
+#{icons}      direction: 'bottom',
+      pickDate: false,
       pickSeconds: false
   });
 });
