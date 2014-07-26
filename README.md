@@ -3,13 +3,26 @@
 This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and creates the Simple Form custom fields for your project.
 
 
+### Features
+
+    - Prepares the vendor directory (javascripts, stylesheets)
+    - Creates the custom fields for Simple Form
+    - You can use 3 type of date & time pickers in your forms
+    - You do not need to write any javascript or CSS code
+    - The language automatically selected based on the locale
+    - You can specify all the datetime-pickers options (weekStart, minDate, manDate, disabledDates, etc.)
+    - The format of the date and time can be specified in the config/locales
+    - You can customise the picker's iconset to use the Font-Awesome icons (dafault: Glyphicon)
+    - Easy to install and use in your projects
+
+
 ### Compatibility
 
-Tag v3.0.2+, eonasdan: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, it is well maintained repo)
+Master from v3.0.2+ and eonasdan branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
 
-Tag v3.0.1, tarruda: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained)
+Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). No further development, only bug fix for fatal issues on this branch.
 
-Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4
+Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further development, only bug fix for fatal issues on this branch.
 
 
 ### Dependency
@@ -23,21 +36,9 @@ It is very easy to install this library by using the https://github.com/derekpri
 
 ### Credits and references
 
-The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git project, which was upgraded to Bootstrap 3+ compatible and refactored significantly by Eonasdan (see: https://github.com/eonasdan/bootstrap-datetimepicker.git).
+The project is based on: https://github.com/tarruda/bootstrap-datetimepicker.git project. It was upgraded to be compatible with Bootstrap 3+ and was refactored significantly by Eonasdan (see: https://github.com/eonasdan/bootstrap-datetimepicker.git).
 
 The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
-
-
-### Features
-
-    - Prepares the vendor directory (javascripts, stylesheets)
-    - Creates the custom fields for Simple Form
-    - You can use the 3 type of date & time pickers in your forms
-    - You do not need to write any javascript or CSS code
-    - The language automatically selected based on the locale
-    - You can specify all the datetime-pickers options (weekStart, minDate, manDate, disabledDates, etc.)
-    - The format of the date and time can be specified in the config/locales
-    - Easy to install and use in your projects
 
 
 ### Installation
@@ -100,9 +101,8 @@ custom field definitions. The generator look at the app/inputs directory of your
 only those custom field definitions that are not already exists in your project. If you have a custom
 input with the same name the generator does not overwrite it.
 
-At generating time the pickers.js and assets files will be places in your assets pipeline roots, that makes these files accessible for you out of the box.
-
-To run the generator is optional, it is up to you to write your own definitions for SimleForm.
+At generation time the pickers.js and required asset files will be places in your assets pipeline,
+that makes these files accessible for you out of the box.
 
 The datetimepicker-rails is using the following custom field definitions:
 
@@ -110,16 +110,23 @@ The datetimepicker-rails is using the following custom field definitions:
     date_picker_input.rb        # for fields with :as => :date_picker
     time_picker_input.rb        # for fields with :as => :time_picker
 
+
 To run the generator use the following command:
+```
+   $ rails generate datetimepicker_rails:install
+```
+if you want to use the default Glyphicon icons for the pickers, or execute the following command
+```
+  $ rails generate datetimepicker_rails:install Font-Awesome
+```
+to use the Font-Awesome icons for the pickers.
 
-    $ rails generate datetimepicker_rails:install
+The current version will copy the required files to your projects 'vendor/assets' directory
+(not to the gem's vendor/assets directory as before). That makes it possible to tailor by your projects
+the SimpleForm 'input' and the 'pickers.js' files to your needs at your own area. That gives you much more
+flexibility to use your preferred options of the bootstrap-datetimepicker plugin.
 
-Attention: The current version will copy the required files to your projects 'vendor/assets'
-directory (not to the gem's vendor/assets directory). That makes it possible to tailor by your
-projects the SimpleForm 'input' files and the 'pickers.js' file to your needs at your own area.
-That gives you much more flexibility.
-
-Do not be surprised, you will see a lot of language files copied to your vendor/assets/locales directory.
+All available language files will be copied to your vendor/assets/locales directory.
 
 ### Using datetimepicker-rails
 
@@ -145,9 +152,9 @@ Just call datetimepicker() with any selector.
 <%= f.input :begin-at, :as => :time_picker %>
 ```
 
-The scripts below will be included, when you use the "require bootstrap-datetimepicker/pickers". If you
-need different activation scripts, ignore the //= require bootstrap-datetimepicker/pickers line in
-app/assets/javascripts/application.js.
+The scripts below will be included, when you use the "require pickers" or "require bootstrap-datetimepicker/pickers". If you
+need different activation scripts, ignore the //= require pickers or //= require bootstrap-datetimepicker/pickers line
+(depending on your installation) in app/assets/javascripts/application.js.
 
 ```javascript
     $(document).on('ready page:change', function() {
@@ -183,39 +190,42 @@ Specify your intended date and time formats in your config/locales/en.yml or rel
         dformat: '%R'              # display format of the time (this is the default, can be ommited)
         pformat: 'HH:mm'           # picking format of the time (this is the default, can be ommited)
 
-For details of the 'pformat' attribute formatting templates, please refer to the moment.js documentation [here](http://momentjs.com/)
+#### Notes for formating date/time:
 
+1. dformat is used to format any date value to put it to the html input tag value attribute.
+The standard Ruby Time library 'strftime' method is used to make this date to string conversion.
+For more details, please refer to the Ruby Built-in Classes and Modules documentation.
+This should be applied for any version.
+
+2. pformat is the format, that used by the javastript library to format the date/time string submitted by a form.
+
+2.1. pformat for current versions (3.0.2+): We have upgraded to the repository
+of bootstrap-datetimepicker by Eonasdan as submodule, the new library is using the moment.js
+(for more information see Moment's documentation [here](http://momentjs.com/).
+
+2.2. pformat for earlier versions: Earlier versions are based on the bootstrap-datetimepicker
+by @tarruda, which applies a different pattern to make the date to string conversion. He does
+not released any documentation. Here is the related part of the source code:
+```
+    dd: {property: 'UTCDate', getPattern: function() { return '(0?[1-9]|[1-2][0-9]|3[0-1])\\b';}},
+    MM: {property: 'UTCMonth', getPattern: function() {return '(0?[1-9]|1[0-2])\\b';}},
+    yy: {property: 'UTCYear', getPattern: function() {return '(\\d{2})\\b'}},
+    yyyy: {property: 'UTCFullYear', getPattern: function() {return '(\\d{4})\\b';}},
+    hh: {property: 'UTCHours', getPattern: function() {return '(0?[0-9]|1[0-9]|2[0-3])\\b';}},
+    mm: {property: 'UTCMinutes', getPattern: function() {return '(0?[0-9]|[1-5][0-9])\\b';}},
+    ss: {property: 'UTCSeconds', getPattern: function() {return '(0?[0-9]|[1-5][0-9])\\b';}},
+    ms: {property: 'UTCMilliseconds', getPattern: function() {return '([0-9]{1,3})\\b';}},
+    HH: {property: 'Hours12', getPattern: function() {return '(0?[1-9]|1[0-2])\\b';}},
+    PP: {property: 'Period12', getPattern: function() {return '(AM|PM|am|pm|Am|aM|Pm|pM)\\b';}}
+```
 
 ### For more details of usage
 
-See the documentation & excellent demos provided by plugin's author:
+See the documentation & excellent demos provided by plugin's authors:
 
-1. for current version: [@Eonasdan]https://github.com/Eonasdan [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
+1. for current version: by [@Eonasdan](https://github.com/Eonasdan) the documentation is [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
 
-2. for earlier version: [@tarruda](https://github.com/tarruda) [here](http://tarruda.github.com/bootstrap-datetimepicker/).
-
-
-### Bugfix - dataToOptions function in the bootstrap-datetimepicker.js
-
-My SimpleForm custom field implementation assumes to work the data-date-* attributes correctly in your picker.
-I find out that, there is a bug in your dataToOptions function that prevents the perfect working of this gem.
-
-Find the abowe code in the in the bootstrap-datetimepicker.js
-```
-        dataToOptions = function () {
-            var eData
-            if (picker.element.is('input')) {
-                eData = picker.element.data();
-            }
-            else {
-                eData = picker.element.data();
-            }
-```
-The else part of the if statement should be the above live:
-```
-                eData = picker.element.find('input').data();
-```
-I have already raised a pull request of this fix. As soon as it will be accepted you can ignore this hacking.
+2. for earlier version: by [@tarruda](https://github.com/tarruda) the documentation is [here](http://tarruda.github.com/bootstrap-datetimepicker/).
 
 
 ### Contributing
