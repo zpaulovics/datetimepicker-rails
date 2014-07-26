@@ -7,18 +7,18 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and cre
 
     - Prepares the vendor directory (javascripts, stylesheets)
     - Creates the custom fields for Simple Form
-    - You can use the 3 type of date & time pickers in your forms
+    - You can use 3 type of date & time pickers in your forms
     - You do not need to write any javascript or CSS code
     - The language automatically selected based on the locale
     - You can specify all the datetime-pickers options (weekStart, minDate, manDate, disabledDates, etc.)
     - The format of the date and time can be specified in the config/locales
-    - You can customise the picker's iconset (dafault: Glyphicon) to use the Font-Awesome icons
+    - You can customise the picker's iconset to use the Font-Awesome icons (dafault: Glyphicon)
     - Easy to install and use in your projects
 
 
 ### Compatibility
 
-Tag v3.0.2+, eonasdan: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, it is well maintained repo)
+Tag v3.0.2+, eonasdan: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo)
 
 Tag v3.0.1, tarruda: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained)
 
@@ -200,29 +200,6 @@ See the documentation & excellent demos provided by plugin's authors:
 1. for current version: from [@Eonasdan](https://github.com/Eonasdan) the documentation is [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
 
 2. for earlier version: from [@tarruda](https://github.com/tarruda) the documentation is [here](http://tarruda.github.com/bootstrap-datetimepicker/).
-
-
-### Bugfix - dataToOptions function in the bootstrap-datetimepicker.js
-
-My SimpleForm custom field implementation assumes to work the data-date-* attributes correctly in the picker plugin.
-I find out that, there is a bug in the dataToOptions function that prevents the perfect working of this gem.
-
-Find the below code in the in the bootstrap-datetimepicker.js
-```
-        dataToOptions = function () {
-            var eData
-            if (picker.element.is('input')) {
-                eData = picker.element.data();
-            }
-            else {
-                eData = picker.element.data();
-            }
-```
-The else part of the if statement should be the above live:
-```
-                eData = picker.element.find('input').data();
-```
-I have already raised a pull request of this fix. As soon as it will be accepted you can ignore this hacking.
 
 
 ### Contributing
