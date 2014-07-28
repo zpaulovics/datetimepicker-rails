@@ -109,25 +109,7 @@ $(document).on('ready page:change', function() {
 
       end
 
-      # We need to hack the bootstrap-datetimepicker.js by the time
-      # the bugfix pull request will be accepted by Eonasdan
-      def hacking_dataToOptions_bug
-        gsub_file 'vendor/assets/javascripts/bootstrap-datetimepicker.js',
-                  /else\s+\{\s+eData\s=\spicker\.element\.data\(\);\s/,
-                  <<-FILE
-            else {
-              eData = picker.element.find('input').data();
-        FILE
-      end
-
-      # Another hack to fix the finder bug when toggle the class of the button
-      def hacking_component_finder
-        gsub_file('vendor/assets/javascripts/bootstrap-datetimepicker.js',
-                  "element\.find\(\'\.input-group-addon span\'\)",
-                  'element.find("[class^=\'input-group-\'] span")')
-      end
-
-      private
+    private
 
       def get_icons
         icons = "       icons: {\n"
