@@ -28,7 +28,7 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further develo
 ### Dependency
 
 The current versions (v3.0.2+) has a dependency on the moment.js javascript library (for details refer to: http://momentjs.com/).
-The gem does not install this library out of the box, so you must look after that. The reason for not included in this gem the
+The gem **does not install this library** out of the box, so **you must look after that**. The reason for not included in this gem the
 installation of moment.js is if you use any package that includes this library (for instance fullcalendar) it would be double installed.
 
 It is very easy to install this library by using the https://github.com/derekprior/momentjs-rails gem.
@@ -192,18 +192,18 @@ Specify your intended date and time formats in your config/locales/en.yml or rel
 
 #### Notes for formating date/time:
 
-1. dformat is used to format any date value to put it to the html input tag value attribute.
+* dformat is used to format any date value to put it to the html input tag value attribute.
 The standard Ruby Time library 'strftime' method is used to make this date to string conversion.
 For more details, please refer to the Ruby Built-in Classes and Modules documentation.
 This should be applied for any version.
 
-2. pformat is the format, that used by the javastript library to format the date/time string submitted by a form.
+* pformat is the format, that used by the javastript library to format the date/time string submitted by a form.
 
-2.1. pformat for current versions (3.0.2+): We have upgraded to the repository
+1. pformat for current versions (3.0.2+): We have upgraded to the repository
 of bootstrap-datetimepicker by Eonasdan as submodule, the new library is using the moment.js
-(for more information see Moment's documentation [here](http://momentjs.com/).
+(for more information see Moment's documentation [here](http://momentjs.com/docs/#/displaying/format/).
 
-2.2. pformat for earlier versions: Earlier versions are based on the bootstrap-datetimepicker
+2. pformat for earlier versions: Earlier versions are based on the bootstrap-datetimepicker
 by @tarruda, which applies a different pattern to make the date to string conversion. He does
 not released any documentation. Here is the related part of the source code:
 ```
