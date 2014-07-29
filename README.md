@@ -28,7 +28,7 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further develo
 ### Dependency
 
 The current versions (v3.0.2+) has a dependency on the moment.js javascript library (for details refer to: http://momentjs.com/).
-The gem does not install this library out of the box, so you must look after that. The reason for not included in this gem the
+The gem **does not install this library** out of the box, so **you must look after that**. The reason for not included in this gem the
 installation of moment.js is if you use any package that includes this library (for instance fullcalendar) it would be double installed.
 
 It is very easy to install this library by using the https://github.com/derekprior/momentjs-rails gem.
