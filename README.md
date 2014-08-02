@@ -27,7 +27,7 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further develo
 
 ### Dependency
 
-The current versions (v3.0.2+) has a dependency on the moment.js javascript library (for details refer to: http://momentjs.com/).
+The current versions (v3.0.4+) has a dependency on the moment.js version >= 2.8 javascript library (for details refer to: http://momentjs.com/).
 The gem **does not install this library** out of the box, so **you must look after that**. The reason for not included in this gem the
 installation of moment.js is if you use any package that includes this library (for instance fullcalendar) it would be double installed.
 
@@ -45,7 +45,7 @@ The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
 
 According your needs, add one of the lines below to your application's Gemfile:
 
-    gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
+    gem 'datetimepicker-rails', '>= 3.0.2', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
         :branch => 'master', :submodules => true
 
     gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
