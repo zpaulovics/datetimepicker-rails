@@ -18,7 +18,7 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and cre
 
 ### Compatibility
 
-Master from v3.0.2+ and eonasdan branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
+Tags from v3.0.2+ releases, master and eonasdan branches: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
 
 Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). No further development, only bug fix for fatal issues on this branch.
 
@@ -27,12 +27,9 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further develo
 
 ### Dependency
 
-The current versions (v3.0.4+) has a dependency on the moment.js version >= 2.8 javascript library (for details refer to: http://momentjs.com/).
-The gem **does not install this library** out of the box, so **you must look after that**. The reason for not included in this gem the
-installation of moment.js is if you use any package that includes this library (for instance fullcalendar) it would be double installed.
+From versions (v3.1.1+) has a dependency on the moment.js version 2.8.1 javascript library (for details refer to: http://momentjs.com/) and the gem includes the dependency reference in its Gemfile (gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails').
 
-It is very easy to install this library by using the https://github.com/derekprior/momentjs-rails gem.
-
+Versions v3.0.2 & V3.0.3 had a dependency on the moment.js version v2.7, but the gem **have not installed this library** out of the box, so **you have to look after that**. Put "gem 'momentjs-rails', '2.7',  :github => 'derekprior/momentjs-rails'" to your project Gemfile to install it.
 
 ### Credits and references
 
