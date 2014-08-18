@@ -18,7 +18,7 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and cre
 
 ### Compatibility
 
-Tags from v3.0.2+ releases, master and eonasdan branches: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
+Master & eonasdan branches, tags v3.0.2+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
 
 Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). No further development, only bug fix for fatal issues on this branch.
 
@@ -27,9 +27,9 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further develo
 
 ### Dependency
 
-From versions (v3.1.1+) has a dependency on the moment.js version 2.8.1 javascript library (for details refer to: http://momentjs.com/) and the gem includes the dependency reference in its Gemfile (gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails').
+Versions v3.1.1+ has a dependency on the moment.js version 2.8.1 javascript library (for details refer to: http://momentjs.com/) and the gem includes the dependency reference in its Gemfile (gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails').
 
-Versions v3.0.2 & V3.0.3 had a dependency on the moment.js version v2.7, but the gem **have not installed this library** out of the box, so **you have to look after that**. Put "gem 'momentjs-rails', '2.7',  :github => 'derekprior/momentjs-rails'" to your project Gemfile to install it.
+Versions v3.0.2 & v3.0.3 has a dependency on the moment.js version v2.7, but the gem **have not installed this library** out of the box, so **you have to look after that**. Put "gem 'momentjs-rails', '2.7',  :github => 'derekprior/momentjs-rails'" to your project Gemfile to install it.
 
 ### Credits and references
 
@@ -42,7 +42,7 @@ The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
 
 According your needs, add one of the lines below to your application's Gemfile:
 
-    gem 'datetimepicker-rails', '>= 3.0.2', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
+    gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
         :branch => 'master', :submodules => true
 
     gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
@@ -67,17 +67,14 @@ or
 
 Add this line to app/assets/javascripts/application.js
 
-``` javascript
-//= require bootstrap-datetimepicker
-```
-
-You can fine tune the included files to suit your needs.
-
 From version 3.0.2+:
 
 ```javascript
+//= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+
+// You may include any languages (optional)
 //= require locales/bootstrap-datetimepicker.hu
 ```
 
@@ -86,6 +83,8 @@ Earlier version:
 ```javascript
 //= require bootstrap-datetimepicker/core
 //= require bootstrap-datetimepicker/pickers
+
+// You may include any languages (optional)
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.hu
 ```
 
