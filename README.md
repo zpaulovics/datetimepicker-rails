@@ -47,7 +47,7 @@ According your needs, add one of the lines below to your application's Gemfile:
 
     gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
 
-    gem 'datetimepicker-rails', github: 'git://github.com/zpaulovics/datetimepicker-rails.git', tag: '1.0.0'
+    gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails', tag: 'v1.0.0'
 
 then execute:
 
