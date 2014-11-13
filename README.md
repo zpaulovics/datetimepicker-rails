@@ -42,10 +42,19 @@ The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
 
 According your needs, add one of the lines below to your application's Gemfile:
 
+**Option 1:** Master & eonasdan branches, tags v3.0.2+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches:
+
+
     gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
         :branch => 'master', :submodules => true
 
+
+**Option 2:** Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). *No further development, only bug fix for fatal issues on this branch*.
+
     gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
+
+
+**Option 3:** Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - *No further development, only bug fix for fatal issues on this branch*.
 
     gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails', tag: 'v1.0.0'
 
