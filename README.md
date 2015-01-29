@@ -1,6 +1,10 @@
 ## SimpleForm & Bootstrap DateTimepicker for Rails
 
+<<<<<<< HEAD
 This gem packages the bootstrap-datetimepicker for Rails asset pipeline and creates the Simple Form custom fields for your project.
+=======
+This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and creates the Simple Form custom fields for your project.
+>>>>>>> d0f8a68f30d7ffb34e505845a693df27467424f3
 
 
 ### Features
@@ -102,12 +106,21 @@ Earlier version:
 
 After you install 'datetimepicker' and add it to your Gemfile, you need to run the generator.
 The generator will create the custom field definitions for Simple Form in your project. There are 3
+<<<<<<< HEAD
 custom field definitions. The generator looks at the app/inputs directory of your project and creates
 only those custom field definitions that are not already exists in your project. If you have a custom
 input with the same name, the generator does not overwrite it.
 
 At generation time the pickers.js and required asset files will be placed in your assets pipeline.
 That makes these files accessible for you out of the box.
+=======
+custom field definitions. The generator look at the app/inputs directory of your project and create
+only those custom field definitions that are not already exists in your project. If you have a custom
+input with the same name the generator does not overwrite it.
+
+At generation time the pickers.js and required asset files will be places in your assets pipeline,
+that makes these files accessible for you out of the box.
+>>>>>>> d0f8a68f30d7ffb34e505845a693df27467424f3
 
 The datetimepicker-rails is using the following custom field definitions:
 
@@ -157,7 +170,11 @@ Just call datetimepicker() with any selector.
 <%= f.input :begin-at, :as => :time_picker %>
 ```
 
+<<<<<<< HEAD
 The scripts below will be included when you use the "require pickers" or "require bootstrap-datetimepicker/pickers". If you
+=======
+The scripts below will be included, when you use the "require pickers" or "require bootstrap-datetimepicker/pickers". If you
+>>>>>>> d0f8a68f30d7ffb34e505845a693df27467424f3
 need different activation scripts, ignore the //= require pickers or //= require bootstrap-datetimepicker/pickers line
 (depending on your installation) in app/assets/javascripts/application.js.
 
@@ -202,15 +219,26 @@ The standard Ruby Time library 'strftime' method is used to make this date to st
 For more details, please refer to the Ruby Built-in Classes and Modules documentation.
 This should be applied for any version.
 
+<<<<<<< HEAD
 * pformat is the format, that used by the JavaScript library to format the date/time string submitted by a form.
 
 1. pformat for current versions (3.0.2+): We have upgraded to the repository
 of bootstrap-datetimepicker by Eonasdan as submodule. The new library is using moment.js
+=======
+* pformat is the format, that used by the javastript library to format the date/time string submitted by a form.
+
+1. pformat for current versions (3.0.2+): We have upgraded to the repository
+of bootstrap-datetimepicker by Eonasdan as submodule, the new library is using the moment.js
+>>>>>>> d0f8a68f30d7ffb34e505845a693df27467424f3
 (for more information see Moment's documentation [here](http://momentjs.com/docs/#/displaying/format/).
 
 2. pformat for earlier versions: Earlier versions are based on the bootstrap-datetimepicker
 by @tarruda, which applies a different pattern to make the date to string conversion. He does
+<<<<<<< HEAD
 not release any documentation. Here is the related part of the source code:
+=======
+not released any documentation. Here is the related part of the source code:
+>>>>>>> d0f8a68f30d7ffb34e505845a693df27467424f3
 ```
     dd: {property: 'UTCDate', getPattern: function() { return '(0?[1-9]|[1-2][0-9]|3[0-1])\\b';}},
     MM: {property: 'UTCMonth', getPattern: function() {return '(0?[1-9]|1[0-2])\\b';}},
