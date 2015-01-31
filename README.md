@@ -1,6 +1,6 @@
 ## SimpleForm & Bootstrap DateTimepicker for Rails
 
-This gem packages the bootstrap-datetimepicker for Rails asset pipeline, and creates the Simple Form custom fields for your project.
+This gem packages the bootstrap-datetimepicker for Rails asset pipeline and creates the Simple Form custom fields for your project.
 
 
 ### Features
@@ -44,9 +44,9 @@ According your needs, add one of the lines below to your application's Gemfile:
 
 **Option 1:** Master & eonasdan branches, tags v3.0.2+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches:
 
-
-    gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git',  \
-        :branch => 'master', :submodules => true
+``` bash
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+```
 
 
 **Option 2:** Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). *No further development, only bug fix for fatal issues on this branch*.
@@ -102,7 +102,7 @@ Earlier version:
 
 After you install 'datetimepicker' and add it to your Gemfile, you need to run the generator.
 The generator will create the custom field definitions for Simple Form in your project. There are 3
-custom field definitions. The generator look at the app/inputs directory of your project and create
+custom field definitions. The generator looks at the app/inputs directory of your project and creates
 only those custom field definitions that are not already exists in your project. If you have a custom
 input with the same name the generator does not overwrite it.
 
@@ -157,7 +157,7 @@ Just call datetimepicker() with any selector.
 <%= f.input :begin-at, :as => :time_picker %>
 ```
 
-The scripts below will be included, when you use the "require pickers" or "require bootstrap-datetimepicker/pickers". If you
+The scripts below will be included when you use the "require pickers" or "require bootstrap-datetimepicker/pickers". If you
 need different activation scripts, ignore the //= require pickers or //= require bootstrap-datetimepicker/pickers line
 (depending on your installation) in app/assets/javascripts/application.js.
 
@@ -202,7 +202,7 @@ The standard Ruby Time library 'strftime' method is used to make this date to st
 For more details, please refer to the Ruby Built-in Classes and Modules documentation.
 This should be applied for any version.
 
-* pformat is the format, that used by the javastript library to format the date/time string submitted by a form.
+* pformat is the format, that used by the JavaScript library to format the date/time string submitted by a form.
 
 1. pformat for current versions (3.0.2+): We have upgraded to the repository
 of bootstrap-datetimepicker by Eonasdan as submodule, the new library is using the moment.js
@@ -210,7 +210,7 @@ of bootstrap-datetimepicker by Eonasdan as submodule, the new library is using t
 
 2. pformat for earlier versions: Earlier versions are based on the bootstrap-datetimepicker
 by @tarruda, which applies a different pattern to make the date to string conversion. He does
-not released any documentation. Here is the related part of the source code:
+not release any documentation. Here is the related part of the source code:
 ```
     dd: {property: 'UTCDate', getPattern: function() { return '(0?[1-9]|[1-2][0-9]|3[0-1])\\b';}},
     MM: {property: 'UTCMonth', getPattern: function() {return '(0?[1-9]|1[0-2])\\b';}},
@@ -235,7 +235,7 @@ See the documentation & excellent demos provided by plugin's authors:
 
 ### Contributing
 
-1. Fork it
+1. Fork it.
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
