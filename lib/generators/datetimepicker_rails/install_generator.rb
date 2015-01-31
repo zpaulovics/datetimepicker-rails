@@ -11,7 +11,11 @@ module DatetimepickerRails
           date: "fa fa-calendar",
           time: "fa fa-clock-o",
           up:   "fa fa-chevron-up",
-          down: "fa fa-chevron-down"
+          down: "fa fa-chevron-down",
+          previous: 'fa fa-chevron-left',
+          next: 'fa fa-chevron-right',
+          today: 'fa fa-crosshairs',
+          clear: 'fa fa-trash-o'
       }
 
       def source_path
@@ -57,25 +61,21 @@ module DatetimepickerRails
         icons = icon_family == 'Glyphicon' ? '' : get_icons
 
         vendor 'assets/javascripts/pickers.js' do <<-FILE
-$(document).on('ready page:change', function() {
+$(document).on('ready, page:change', function() {
   $('.datepicker').datetimepicker({
-#{icons}      direction: 'bottom',
-      pickTime: false
+#{icons}
   });
 });
 
-$(document).on('ready page:change', function() {
+$(document).on('ready, page:change', function() {
   $('.datetimepicker').datetimepicker({
-#{icons}      direction: 'bottom',
-pickSeconds: false
+#{icons}
   });
 });
 
-$(document).on('ready page:change', function() {
+$(document).on('ready, page:change', function() {
   $('.timepicker').datetimepicker({
-#{icons}      direction: 'bottom',
-      pickDate: false,
-      pickSeconds: false
+#{icons}
   });
 });
         FILE
@@ -109,6 +109,22 @@ $(document).on('ready page:change', function() {
 
       end
 
+
+      # We need to hack the bootstrap-datetimepicker.js by the time
+      # the bugfix pull request will be accepted by Eonasdan
+      def hacking_dataToOptions_bug
+        gsub_file 'vendor/assets/javascripts/bootstrap-datetimepicker.js',
+                  /dataOptions\s=\s\{\}\;\s/,
+                  <<-FILE
+dataOptions = {};
+                if (element.is('input')) {
+                    eData = element.data();
+                } else {
+                    eData = element.find('input').data();
+                }
+        FILE
+      end
+
     private
 
       def get_icons
@@ -117,6 +133,10 @@ $(document).on('ready page:change', function() {
         icons += "          time: \'#{options[:custom_icons][:time]}\',\n"
         icons += "          up: \'#{options[:custom_icons][:up]}\',\n"
         icons += "          down: \'#{options[:custom_icons][:down]}\'\n"
+        icons += "          previous: \'#{options[:custom_icons][:previous]}\'\n"
+        icons += "          next: \'#{options[:custom_icons][:next]}\'\n"
+        icons += "          today: \'#{options[:custom_icons][:today]}\'\n"
+        icons += "          clear: \'#{options[:custom_icons][:clear]}\'\n"
         icons += "      },\n"
       end
 
