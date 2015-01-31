@@ -2,7 +2,6 @@
 
 This gem packages the bootstrap-datetimepicker for Rails asset pipeline and creates the Simple Form custom fields for your project.
 
-
 ### Features
 
     - Prepares the vendor directory (javascripts, stylesheets)
@@ -15,10 +14,17 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline and crea
     - You can customise the picker's iconset to use the Font-Awesome icons (dafault: Glyphicon)
     - Easy to install and use in your projects
 
+### The current 4.0.0 version compatibility
+ - Ruby 2.2.0
+ - Rails 4.2
+ - Simpleform 3.1
+ - Momentjs-rails 2.9
+ - http://eonasdan.github.io/bootstrap-datetimepicker version 4.0.0
 
-### Compatibility
 
-Master & eonasdan branches, tags v3.0.2+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
+### Compatibility details
+
+Master & eonasdan branches, tags v4.0.0+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
 
 Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). No further development, only bug fix for fatal issues on this branch.
 
@@ -27,7 +33,7 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further develo
 
 ### Dependency
 
-Versions v3.1.1+ has a dependency on the moment.js version 2.8.1 javascript library (for details refer to: http://momentjs.com/) and the gem includes the dependency reference in its Gemfile (gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails').
+Versions v4.0.0+ has a dependency on the moment.js version 2.9 javascript library (for details refer to: http://momentjs.com/) and the gem includes the dependency reference in its Gemfile (gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails').
 
 Versions v3.0.2 & v3.0.3 has a dependency on the moment.js version v2.7, but the gem **have not installed this library** out of the box, so **you have to look after that**. Put "gem 'momentjs-rails', '2.7',  :github => 'derekprior/momentjs-rails'" to your project Gemfile to install it.
 
@@ -42,7 +48,7 @@ The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
 
 According your needs, add one of the lines below to your application's Gemfile:
 
-**Option 1:** Master & eonasdan branches, tags v3.0.2+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches:
+**Option 1:** Master & eonasdan branches, tags v4.0.0+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches:
 
 ``` bash
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
@@ -76,7 +82,7 @@ or
 
 Add this line to app/assets/javascripts/application.js
 
-From version 3.0.2+:
+From version 4.0.0+:
 
 ```javascript
 //= require moment
@@ -84,7 +90,7 @@ From version 3.0.2+:
 //= require pickers
 
 // You may include any languages (optional)
-//= require locales/bootstrap-datetimepicker.hu
+//= require moment/hu
 ```
 
 Earlier version:
@@ -131,8 +137,6 @@ The current version will copy the required files to your projects 'vendor/assets
 the SimpleForm 'input' and the 'pickers.js' files to your needs at your own area. That gives you much more
 flexibility to use your preferred options of the bootstrap-datetimepicker plugin.
 
-All available language files will be copied to your vendor/assets/locales directory.
-
 ### Using datetimepicker-rails
 
 Just call datetimepicker() with any selector.
@@ -161,20 +165,85 @@ The scripts below will be included when you use the "require pickers" or "requir
 need different activation scripts, ignore the //= require pickers or //= require bootstrap-datetimepicker/pickers line
 (depending on your installation) in app/assets/javascripts/application.js.
 
+From version 4.0.0+:
+
 ```javascript
-    $(document).on('ready page:change', function() {
+    $(document).on('ready, page:change', function() {
+        $('.datepicker').datetimepicker({
+        });
+    });
+
+    $(document).on('ready, page:change', function() {
+        $('.datetimepicker').datetimepicker({
+        });
+    });
+
+    $(document).on('ready, page:change', function() {
+        $('.timepicker').datetimepicker({
+        });
+    });
+```
+
+The default values of the options:
+
+```
+        format: false,
+        dayViewHeaderFormat: 'MMMM YYYY',
+        extraFormats: false,
+        stepping: 1,
+        minDate: false,
+        maxDate: false,
+        useCurrent: true,
+        collapse: true,
+        locale: moment.locale(),
+        defaultDate: false,
+        disabledDates: false,
+        enabledDates: false,
+        icons: {
+            time: 'glyphicon glyphicon-time',
+            date: 'glyphicon glyphicon-calendar',
+            up: 'glyphicon glyphicon-chevron-up',
+            down: 'glyphicon glyphicon-chevron-down',
+            previous: 'glyphicon glyphicon-chevron-left',
+            next: 'glyphicon glyphicon-chevron-right',
+            today: 'glyphicon glyphicon-screenshot',
+            clear: 'glyphicon glyphicon-trash'
+        },
+        useStrict: false,
+        sideBySide: false,
+        daysOfWeekDisabled: [],
+        calendarWeeks: false,
+        viewMode: 'days',
+        toolbarPlacement: 'default',
+        showTodayButton: false,
+        showClear: false,
+        widgetPositioning: {
+            horizontal: 'auto',
+            vertical: 'auto'
+        },
+        widgetParent: null,
+        keepOpen: false
+```
+For more details, please refer to Bootstrap 3 Datepicker v4 Docs site:
+  - [documentation](http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs)
+  - [options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/)
+
+Earlier version:
+
+```javascript
+    $(document).on('ready, page:change', function() {
         $('.datepicker').datetimepicker({
             pickTime: false
         });
     });
 
-    $(document).on('ready page:change', function() {
+    $(document).on('ready, page:change', function() {
         $('.datetimepicker').datetimepicker({
             pickSeconds: false
         });
     });
 
-    $(document).on('ready page:change', function() {
+    $(document).on('ready, page:change', function() {
         $('.timepicker').datetimepicker({
             pickDate: false,
             pickSeconds: false
@@ -188,12 +257,13 @@ Specify your intended date and time formats in your config/locales/en.yml or rel
 
     en:
       datepicker:
-        dformat: '%d/%m/%Y'        # display format of the date (this is the default, can be ommited)
-        pformat: 'DD/MM/YYYY'      # picking format of the date (this is the default, can be ommited)
-        weekstart: 0               # the week starts on Sunday (this is the default, can be ommited)
+        dformat: '%d/%m/%Y'             # display format of the date (this is the default, can be ommited)
+        pformat: 'DD/MM/YYYY'           # picking format of the date (this is the default, can be ommited)
+        weekstart: 0                    # the week starts on Sunday (this is the default, can be ommited)
       timepicker:
-        dformat: '%R'              # display format of the time (this is the default, can be ommited)
-        pformat: 'HH:mm'           # picking format of the time (this is the default, can be ommited)
+        dformat: '%R'                   # display format of the time (this is the default, can be ommited)
+        pformat: 'HH:mm'                # picking format of the time (this is the default, can be ommited)
+      dayViewHeaderFormat: 'MMMM YYYY'  # picking format of the time (this is the default, can be ommited)
 
 #### Notes for formating date/time:
 
@@ -226,11 +296,36 @@ not release any documentation. Here is the related part of the source code:
 
 ### For more details of usage
 
+[I have a demo application using the datetimeoicker-rails gem here] (https://github.com/zpaulovics/dateTimeDemo)
+
+
 See the documentation & excellent demos provided by plugin's authors:
 
 1. for current version: by [@Eonasdan](https://github.com/Eonasdan) the documentation is [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
 
 2. for earlier version: by [@tarruda](https://github.com/tarruda) the documentation is [here](http://tarruda.github.com/bootstrap-datetimepicker/).
+
+
+### Bugfix - dataToOptions function in the bootstrap-datetimepicker.js
+
+My SimpleForm custom field implementation assumes to work the data-date-* attributes correctly in your picker.
+I find out that, there is a bug in your dataToOptions function that prevents the perfect working of this gem.
+
+The generator has a patching function to fix the issue. It finds above code in the in the bootstrap-datetimepicker.js
+```
+	dataToOptions = function () {
+		var eData = element.data(),
+		dataOptions = {};
+```
+Then insert the lines below:
+```
+		if (element.is('input')) {
+ 			eData = element.data();
+ 		} else {
+ 			eData = element.find('input').data();
+		}
+```
+I have already raised a pull request of this fix. As soon as it will be accepted you can ignore this hacking.
 
 
 ### Contributing
