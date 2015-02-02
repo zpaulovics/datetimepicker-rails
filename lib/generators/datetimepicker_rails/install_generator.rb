@@ -63,18 +63,21 @@ module DatetimepickerRails
         vendor 'assets/javascripts/pickers.js' do <<-FILE
 $(document).on('ready, page:change', function() {
   $('.datepicker').datetimepicker({
+//  Any customisation of object creation should be inserted here
 #{icons}
   });
 });
 
 $(document).on('ready, page:change', function() {
   $('.datetimepicker').datetimepicker({
+//  Any customisation of object creation should be inserted here
 #{icons}
   });
 });
 
 $(document).on('ready, page:change', function() {
   $('.timepicker').datetimepicker({
+//  Any customisation of object creation should be inserted here
 #{icons}
   });
 });
@@ -117,6 +120,7 @@ $(document).on('ready, page:change', function() {
                   /dataOptions\s=\s\{\}\;\s/,
                   <<-FILE
 dataOptions = {};
+
                 if (element.is('input')) {
                     eData = element.data();
                 } else {
