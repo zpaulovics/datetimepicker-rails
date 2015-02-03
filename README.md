@@ -71,7 +71,7 @@ or
 
 ```
 
-Add this line to app/assets/javascripts/application.js
+Add the following lines to app/assets/javascripts/application.js
 
 For version 4.0.0+:
 
@@ -124,10 +124,9 @@ To use the Font-Awesome icons for the pickers, execute the following command (on
   $ rails generate datetimepicker_rails:install Font-Awesome
 ```
 
-The current version will copy the required files to your projects 'vendor/assets' directory
-(not to the gem's vendor/assets directory as before). That makes it possible to tailor by your projects
-the SimpleForm 'input' and the 'pickers.js' files to your needs at your own area. That gives you much more
-flexibility to use your preferred options of the bootstrap-datetimepicker plugin.
+The current version will copy the required files to your projects 'vendor/assets' directory (not to the gem's vendor/assets directory as before). That gives you much more flexibility to use your preferred options of the bootstrap-datetimepicker plugin.
+
+To tailor the picker to your specific needs you can modify the SimpleForm 'input' definition files and/or the 'pickers.js' file at your own project area.
 
 ### Using datetimepicker-rails
 
