@@ -22,20 +22,16 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline and crea
  - http://eonasdan.github.io/bootstrap-datetimepicker version 4.0.0
 
 
-### Compatibility details
+### Branches
 
 Master & eonasdan branches, tags v4.0.0+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
 
-Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). No further development, only bug fix for fatal issues on this branch.
-
-Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - No further development, only bug fix for fatal issues on this branch.
+Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - It is archived. No further development or maintenance.
 
 
 ### Dependency
 
-Versions v4.0.0+ has a dependency on the moment.js version 2.9 javascript library (for details refer to: http://momentjs.com/) and the gem includes the dependency reference in its Gemfile (gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails').
-
-Versions v3.0.2 & v3.0.3 has a dependency on the moment.js version v2.7, but the gem **have not installed this library** out of the box, so **you have to look after that**. Put "gem 'momentjs-rails', '2.7',  :github => 'derekprior/momentjs-rails'" to your project Gemfile to install it.
+Versions v4.0.0+ has a dependency on the moment.js version 2.9+ javascript library (for details refer to: http://momentjs.com/). Includes the dependency reference in its Gemfile (gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails').
 
 ### Credits and references
 
@@ -55,12 +51,7 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 ```
 
 
-**Option 2:** Tag v3.0.1 and tarruda branch: Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+ (using an upgraded version of https://github.com/tarruda/bootstrap-datetimepicker.git as inline code, not maintained). *No further development, only bug fix for fatal issues on this branch*.
-
-    gem 'datetimepicker-rails', '>= 3.0.0', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'tarruda'
-
-
-**Option 3:** Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - *No further development, only bug fix for fatal issues on this branch*.
+**Option 2:** Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - *No further development or maintenance*.
 
     gem 'datetimepicker-rails', git: 'git://github.com/zpaulovics/datetimepicker-rails', tag: 'v1.0.0'
 
@@ -82,7 +73,7 @@ or
 
 Add this line to app/assets/javascripts/application.js
 
-From version 4.0.0+:
+For version 4.0.0+:
 
 ```javascript
 //= require moment
@@ -90,10 +81,10 @@ From version 4.0.0+:
 //= require pickers
 
 // You may include any languages (optional)
-//= require moment/hu
+//= require moment/<your locale>
 ```
 
-Earlier version:
+For version v1.0.0:
 
 ```javascript
 //= require bootstrap-datetimepicker/core
@@ -126,11 +117,12 @@ To run the generator use the following command:
 ```
    $ rails generate datetimepicker_rails:install
 ```
-if you want to use the default Glyphicon icons for the pickers, or execute the following command
+if you want to use the default Glyphicon icons for the pickers.
+
+To use the Font-Awesome icons for the pickers, execute the following command (only for version v4.0.0+)
 ```
   $ rails generate datetimepicker_rails:install Font-Awesome
 ```
-to use the Font-Awesome icons for the pickers.
 
 The current version will copy the required files to your projects 'vendor/assets' directory
 (not to the gem's vendor/assets directory as before). That makes it possible to tailor by your projects
@@ -158,28 +150,29 @@ Just call datetimepicker() with any selector.
 
 <%= f.input :closing_date, :as => :date_picker %>
 
-<%= f.input :begin-at, :as => :time_picker %>
+<%= f.input :begin_at, :as => :time_picker %>
 ```
 
-The scripts below will be included when you use the "require pickers" or "require bootstrap-datetimepicker/pickers". If you
-need different activation scripts, ignore the //= require pickers or //= require bootstrap-datetimepicker/pickers line
-(depending on your installation) in app/assets/javascripts/application.js.
+The scripts below will be included when you use the "require pickers" (for version v4.0.0+) or "require bootstrap-datetimepicker/pickers" (for version v1.0.0). If you need different activation scripts, ignore the //= require pickers (for version v4.0.0+) or //= require bootstrap-datetimepicker/pickers (for version v1.0.0) line in app/assets/javascripts/application.js.
 
-From version 4.0.0+:
+Version 4.0.0+:
 
 ```javascript
     $(document).on('ready, page:change', function() {
         $('.datepicker').datetimepicker({
+        //  Any customisation should be inserted here
         });
     });
 
     $(document).on('ready, page:change', function() {
         $('.datetimepicker').datetimepicker({
+        //  Any customisation should be inserted here
         });
     });
 
     $(document).on('ready, page:change', function() {
         $('.timepicker').datetimepicker({
+        //  Any customisation should be inserted here
         });
     });
 ```
@@ -225,10 +218,10 @@ The default values of the options:
         keepOpen: false
 ```
 For more details, please refer to Bootstrap 3 Datepicker v4 Docs site:
-  - [documentation](http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs)
-  - [options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/)
+  - [for public API documentation](http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs)
+  - [for description of the options](http://eonasdan.github.io/bootstrap-datetimepicker/Options/)
 
-Earlier version:
+Version v1.0.0:
 
 ```javascript
     $(document).on('ready, page:change', function() {
@@ -259,7 +252,6 @@ Specify your intended date and time formats in your config/locales/en.yml or rel
       datepicker:
         dformat: '%d/%m/%Y'             # display format of the date (this is the default, can be ommited)
         pformat: 'DD/MM/YYYY'           # picking format of the date (this is the default, can be ommited)
-        weekstart: 0                    # the week starts on Sunday (this is the default, can be ommited)
       timepicker:
         dformat: '%R'                   # display format of the time (this is the default, can be ommited)
         pformat: 'HH:mm'                # picking format of the time (this is the default, can be ommited)
@@ -274,13 +266,9 @@ This should be applied for any version.
 
 * pformat is the format, that used by the JavaScript library to format the date/time string submitted by a form.
 
-1. pformat for current versions (3.0.2+): We have upgraded to the repository
-of bootstrap-datetimepicker by Eonasdan as submodule, the new library is using the moment.js
-(for more information see Moment's documentation [here](http://momentjs.com/docs/#/displaying/format/).
+1. pformat for current versions: We have upgraded to the repository of bootstrap-datetimepicker by Eonasdan as submodule, the new library is using the moment.js (for more information see Moment's documentation [here](http://momentjs.com/docs/#/displaying/format/).
 
-2. pformat for earlier versions: Earlier versions are based on the bootstrap-datetimepicker
-by @tarruda, which applies a different pattern to make the date to string conversion. He does
-not release any documentation. Here is the related part of the source code:
+2. pformat for version v1.0.0: Version v1.0.0 are based on the bootstrap-datetimepicker by @tarruda, which applies a different pattern to make the date to string conversion. He does not release any documentation. Here is the related part of the source code:
 ```
     dd: {property: 'UTCDate', getPattern: function() { return '(0?[1-9]|[1-2][0-9]|3[0-1])\\b';}},
     MM: {property: 'UTCMonth', getPattern: function() {return '(0?[1-9]|1[0-2])\\b';}},
@@ -296,28 +284,27 @@ not release any documentation. Here is the related part of the source code:
 
 ### For more details of usage
 
-[I have a demo application using the datetimeoicker-rails gem here] (https://github.com/zpaulovics/dateTimeDemo)
+[You can find a demo application using the datetimeoicker-rails gem here] (https://github.com/zpaulovics/dateTimeDemo)
 
 
 See the documentation & excellent demos provided by plugin's authors:
 
 1. for current version: by [@Eonasdan](https://github.com/Eonasdan) the documentation is [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
 
-2. for earlier version: by [@tarruda](https://github.com/tarruda) the documentation is [here](http://tarruda.github.com/bootstrap-datetimepicker/).
+2. for version v1.0.0: by [@tarruda](https://github.com/tarruda) the documentation is [here](http://tarruda.github.com/bootstrap-datetimepicker/).
 
 
 ### Bugfix - dataToOptions function in the bootstrap-datetimepicker.js
 
-My SimpleForm custom field implementation assumes to work the data-date-* attributes correctly in your picker.
-I find out that, there is a bug in your dataToOptions function that prevents the perfect working of this gem.
+This SimpleForm custom field implementation use the data-date-* attributes feature of bootstrap-datetimepicker, but there is a bug in dataToOptions function.
 
-The generator has a patching function to fix the issue. It finds above code in the in the bootstrap-datetimepicker.js
+The generator has a patch to fix this issue. It finds above code in the in the bootstrap-datetimepicker.js
 ```
 	dataToOptions = function () {
 		var eData = element.data(),
 		dataOptions = {};
 ```
-Then insert the lines below:
+Then inserts the lines below:
 ```
 		if (element.is('input')) {
  			eData = element.data();
@@ -325,7 +312,7 @@ Then insert the lines below:
  			eData = element.find('input').data();
 		}
 ```
-I have already raised a pull request of this fix. As soon as it will be accepted you can ignore this hacking.
+A pull request has been raised to fix this issue. As soon as it will be accepted this hacking will be removed.
 
 
 ### Contributing
