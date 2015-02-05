@@ -51,6 +51,11 @@ module DatetimepickerRails
                   options[:custom_icons][:time]) unless icon_family == 'Glyphicon'
       end
 
+      def copy_datetime_wrapper
+        template "wrappers/ranged_datetime_wrapper.rb", "config/initializers/ranged_datetime_wrapper.rb" unless
+            File.exist?('config/initializers/ranged_datetime_wrapper.rb')
+      end
+
       # def copy_pickers_js
       #   copy_file("#{source_paths.last}/js/pickers.js",
       #             "vendor/assets/javascripts/pickers.js")
@@ -62,24 +67,46 @@ module DatetimepickerRails
 
         vendor 'assets/javascripts/pickers.js' do <<-FILE
 $(document).on('ready, page:change', function() {
-  $('.datepicker').datetimepicker({
-//  Any customisation of object creation should be inserted here
-#{icons}
-  });
-});
-
-$(document).on('ready, page:change', function() {
   $('.datetimepicker').datetimepicker({
 //  Any customisation of object creation should be inserted here
 #{icons}
   });
-});
 
-$(document).on('ready, page:change', function() {
   $('.timepicker').datetimepicker({
 //  Any customisation of object creation should be inserted here
 #{icons}
   });
+
+  $('.datepicker').datetimepicker({
+//  Any customisation of object creation should be inserted here
+#{icons}
+  });
+
+  $('.datetimerange').each(function(){
+    var $this = $(this)
+    var range1 = $($this.find('.input-group')[0])
+    var range2 = $($this.find('.input-group')[1])
+
+    if(range1.data("DateTimePicker").date() != null)
+      range2.data("DateTimePicker").minDate(range1.data("DateTimePicker").date());
+
+    if(range2.data("DateTimePicker").date() != null)
+      range1.data("DateTimePicker").maxDate(range2.data("DateTimePicker").date());
+
+    range1.on("dp.change",function (e) {
+      if(e.date)
+        range2.data("DateTimePicker").minDate(e.date);
+      else
+        range2.data("DateTimePicker").minDate(false);
+    });
+
+    range2.on("dp.change",function (e) {
+      if(e.date)
+        range1.data("DateTimePicker").maxDate(e.date);
+      else
+        range1.data("DateTimePicker").maxDate(false);
+    });
+  })
 });
         FILE
         end

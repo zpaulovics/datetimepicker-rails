@@ -150,6 +150,11 @@ Just call datetimepicker() with any selector.
 <%= f.input :closing_date, :as => :date_picker %>
 
 <%= f.input :begin_at, :as => :time_picker %>
+
+<div class='row datetimerange'>
+    <%= f.input :publish_date, as: :datetime_picker, wrapper: :ranged_datetime %>
+    <%= f.input :expiration_date, as: :datetime_picker, wrapper: :ranged_datetime %>
+</div>
 ```
 
 The scripts below will be included when you use the "require pickers" (for version v4.0.0+) or "require bootstrap-datetimepicker/pickers" (for version v1.0.0). If you need different activation scripts, ignore the //= require pickers (for version v4.0.0+) or //= require bootstrap-datetimepicker/pickers (for version v1.0.0) line in app/assets/javascripts/application.js.
@@ -158,21 +163,37 @@ Version 4.0.0+:
 
 ```javascript
     $(document).on('ready, page:change', function() {
-        $('.datepicker').datetimepicker({
-        //  Any customisation should be inserted here
-        });
-    });
+      $('.timepicker').datetimepicker();
 
-    $(document).on('ready, page:change', function() {
-        $('.datetimepicker').datetimepicker({
-        //  Any customisation should be inserted here
-        });
-    });
+      $('.datetimepicker').datetimepicker();
 
-    $(document).on('ready, page:change', function() {
-        $('.timepicker').datetimepicker({
-        //  Any customisation should be inserted here
+      $('.datepicker').datetimepicker();
+
+      $('.datetimerange').each(function(){
+        var $this = $(this)
+        var range1 = $($this.find('.input-group')[0])
+        var range2 = $($this.find('.input-group')[1])
+
+        if(range1.data("DateTimePicker").date() != null)
+          range2.data("DateTimePicker").minDate(range1.data("DateTimePicker").date());
+
+        if(range2.data("DateTimePicker").date() != null)
+          range1.data("DateTimePicker").maxDate(range2.data("DateTimePicker").date());
+
+        range1.on("dp.change",function (e) {
+          if(e.date)
+            range2.data("DateTimePicker").minDate(e.date);
+          else
+            range2.data("DateTimePicker").minDate(false);
         });
+
+        range2.on("dp.change",function (e) {
+          if(e.date)
+            range1.data("DateTimePicker").maxDate(e.date);
+          else
+            range1.data("DateTimePicker").maxDate(false);
+        });
+      })
     });
 ```
 
