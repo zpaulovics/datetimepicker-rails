@@ -56,31 +56,21 @@ module DatetimepickerRails
             File.exist?('config/initializers/ranged_datetime_wrapper.rb')
       end
 
-      # def copy_pickers_js
-      #   copy_file("#{source_paths.last}/js/pickers.js",
-      #             "vendor/assets/javascripts/pickers.js")
-      # end
-
       def create_pickers_js
         puts("icon_family: #{icon_family}")
         icons = icon_family == 'Glyphicon' ? '' : get_icons
 
         vendor 'assets/javascripts/pickers.js' do <<-FILE
+var default_picker_options = {
+#{icons}
+}
+
 $(document).on('ready page:change', function() {
-  $('.datetimepicker').datetimepicker({
-//  Any customisation of object creation should be inserted here
-#{icons}
-  });
+  $('.datetimepicker').datetimepicker(default_picker_options);
 
-  $('.timepicker').datetimepicker({
-//  Any customisation of object creation should be inserted here
-#{icons}
-  });
+  $('.timepicker').datetimepicker(default_picker_options);
 
-  $('.datepicker').datetimepicker({
-//  Any customisation of object creation should be inserted here
-#{icons}
-  });
+  $('.datepicker').datetimepicker(default_picker_options);
 
   $('.datetimerange').each(function(){
     var $this = $(this)
@@ -159,16 +149,16 @@ dataOptions = {};
     private
 
       def get_icons
-        icons = "       icons: {\n"
-        icons += "          date: \'#{options[:custom_icons][:date]}\',\n"
-        icons += "          time: \'#{options[:custom_icons][:time]}\',\n"
-        icons += "          up: \'#{options[:custom_icons][:up]}\',\n"
-        icons += "          down: \'#{options[:custom_icons][:down]}\',\n"
-        icons += "          previous: \'#{options[:custom_icons][:previous]}\',\n"
-        icons += "          next: \'#{options[:custom_icons][:next]}\',\n"
-        icons += "          today: \'#{options[:custom_icons][:today]}\',\n"
-        icons += "          clear: \'#{options[:custom_icons][:clear]}\'\n"
-        icons += "      }\n"
+        icons = "    icons: {\n"
+        icons += "      date: \'#{options[:custom_icons][:date]}\',\n"
+        icons += "      time: \'#{options[:custom_icons][:time]}\',\n"
+        icons += "      up: \'#{options[:custom_icons][:up]}\',\n"
+        icons += "      down: \'#{options[:custom_icons][:down]}\',\n"
+        icons += "      previous: \'#{options[:custom_icons][:previous]}\',\n"
+        icons += "      next: \'#{options[:custom_icons][:next]}\',\n"
+        icons += "      today: \'#{options[:custom_icons][:today]}\',\n"
+        icons += "      clear: \'#{options[:custom_icons][:clear]}\'\n"
+        icons += "    }\n"
       end
 
     end
