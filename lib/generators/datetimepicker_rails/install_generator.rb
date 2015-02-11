@@ -66,7 +66,7 @@ module DatetimepickerRails
         icons = icon_family == 'Glyphicon' ? '' : get_icons
 
         vendor 'assets/javascripts/pickers.js' do <<-FILE
-$(document).on('ready, page:change', function() {
+$(document).on('ready page:change', function() {
   $('.datetimepicker').datetimepicker({
 //  Any customisation of object creation should be inserted here
 #{icons}
@@ -168,7 +168,7 @@ dataOptions = {};
         icons += "          next: \'#{options[:custom_icons][:next]}\',\n"
         icons += "          today: \'#{options[:custom_icons][:today]}\',\n"
         icons += "          clear: \'#{options[:custom_icons][:clear]}\'\n"
-        icons += "      },\n"
+        icons += "      }\n"
       end
 
     end
