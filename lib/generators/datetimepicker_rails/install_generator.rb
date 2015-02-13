@@ -11,7 +11,11 @@ module DatetimepickerRails
           date: "fa fa-calendar",
           time: "fa fa-clock-o",
           up:   "fa fa-chevron-up",
-          down: "fa fa-chevron-down"
+          down: "fa fa-chevron-down",
+          previous: 'fa fa-chevron-left',
+          next: 'fa fa-chevron-right',
+          today: 'fa fa-crosshairs',
+          clear: 'fa fa-trash-o'
       }
 
       def source_path
@@ -47,36 +51,52 @@ module DatetimepickerRails
                   options[:custom_icons][:time]) unless icon_family == 'Glyphicon'
       end
 
-      # def copy_pickers_js
-      #   copy_file("#{source_paths.last}/js/pickers.js",
-      #             "vendor/assets/javascripts/pickers.js")
-      # end
+      def copy_datetime_wrapper
+        template "wrappers/ranged_datetime_wrapper.rb", "config/initializers/ranged_datetime_wrapper.rb" unless
+            File.exist?('config/initializers/ranged_datetime_wrapper.rb')
+      end
 
       def create_pickers_js
         puts("icon_family: #{icon_family}")
         icons = icon_family == 'Glyphicon' ? '' : get_icons
 
         vendor 'assets/javascripts/pickers.js' do <<-FILE
-$(document).on('ready page:change', function() {
-  $('.datepicker').datetimepicker({
-#{icons}      direction: 'bottom',
-      pickTime: false
-  });
-});
+var default_picker_options = {
+#{icons}
+}
 
 $(document).on('ready page:change', function() {
-  $('.datetimepicker').datetimepicker({
-#{icons}      direction: 'bottom',
-pickSeconds: false
-  });
-});
+  $('.datetimepicker').datetimepicker(default_picker_options);
 
-$(document).on('ready page:change', function() {
-  $('.timepicker').datetimepicker({
-#{icons}      direction: 'bottom',
-      pickDate: false,
-      pickSeconds: false
-  });
+  $('.timepicker').datetimepicker(default_picker_options);
+
+  $('.datepicker').datetimepicker(default_picker_options);
+
+  $('.datetimerange').each(function(){
+    var $this = $(this)
+    var range1 = $($this.find('.input-group')[0])
+    var range2 = $($this.find('.input-group')[1])
+
+    if(range1.data("DateTimePicker").date() != null)
+      range2.data("DateTimePicker").minDate(range1.data("DateTimePicker").date());
+
+    if(range2.data("DateTimePicker").date() != null)
+      range1.data("DateTimePicker").maxDate(range2.data("DateTimePicker").date());
+
+    range1.on("dp.change",function (e) {
+      if(e.date)
+        range2.data("DateTimePicker").minDate(e.date);
+      else
+        range2.data("DateTimePicker").minDate(false);
+    });
+
+    range2.on("dp.change",function (e) {
+      if(e.date)
+        range1.data("DateTimePicker").maxDate(e.date);
+      else
+        range1.data("DateTimePicker").maxDate(false);
+    });
+  })
 });
         FILE
         end
@@ -109,15 +129,36 @@ $(document).on('ready page:change', function() {
 
       end
 
+
+      # We need to hack the bootstrap-datetimepicker.js by the time
+      # the bugfix pull request will be accepted by Eonasdan
+      def hacking_dataToOptions_bug
+        gsub_file 'vendor/assets/javascripts/bootstrap-datetimepicker.js',
+                  /dataOptions\s=\s\{\}\;\s/,
+                  <<-FILE
+dataOptions = {};
+
+                if (element.is('input')) {
+                    eData = element.data();
+                } else {
+                    eData = element.find('input').data();
+                }
+        FILE
+      end
+
     private
 
       def get_icons
-        icons = "       icons: {\n"
-        icons += "          date: \'#{options[:custom_icons][:date]}\',\n"
-        icons += "          time: \'#{options[:custom_icons][:time]}\',\n"
-        icons += "          up: \'#{options[:custom_icons][:up]}\',\n"
-        icons += "          down: \'#{options[:custom_icons][:down]}\'\n"
-        icons += "      },\n"
+        icons = "    icons: {\n"
+        icons += "      date: \'#{options[:custom_icons][:date]}\',\n"
+        icons += "      time: \'#{options[:custom_icons][:time]}\',\n"
+        icons += "      up: \'#{options[:custom_icons][:up]}\',\n"
+        icons += "      down: \'#{options[:custom_icons][:down]}\',\n"
+        icons += "      previous: \'#{options[:custom_icons][:previous]}\',\n"
+        icons += "      next: \'#{options[:custom_icons][:next]}\',\n"
+        icons += "      today: \'#{options[:custom_icons][:today]}\',\n"
+        icons += "      clear: \'#{options[:custom_icons][:clear]}\'\n"
+        icons += "    }\n"
       end
 
     end

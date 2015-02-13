@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["zpaulovics"]
   gem.email         = ["zpaulovics@gmail.com"]
   gem.description   = %q{A date and time picker for Twitter Bootstrap in Rails using Simple Form}
-  gem.summary       = %q{This gem packages the bootstrap-datetimepicker for Rails 3.1+ asset pipeline, and creates the Simple Form custom fields. The current version is compatible with Bootstrap 3+, Rails 4+ and SimpleForm 3.1.RC1+}
+  gem.summary       = %q{This gem packages the bootstrap-datetimepicker for Rails 3.1+ asset pipeline, and creates the Simple Form custom fields. The current version is compatible with Bootstrap 3+, Rails 4+ and SimpleForm 3.1+}
   gem.homepage      = "https://github.com/zpaulovics/datetimepicker-rails.git"
 
   gem.files         = `git ls-files`.split($/)
