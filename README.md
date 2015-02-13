@@ -163,6 +163,9 @@ Version 4.0.0+:
 
 ```javascript
 var default_picker_options = {
+  // put here your default options that should be applied for all pickers
+
+  // icons will be inserted if you run the generator with Font-Awesome parameter
   icons: {
     date: 'fa fa-calendar',
     time: 'fa fa-clock-o',
