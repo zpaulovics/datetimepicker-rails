@@ -129,23 +129,6 @@ $(document).on('ready page:change', function() {
 
       end
 
-
-      # We need to hack the bootstrap-datetimepicker.js by the time
-      # the bugfix pull request will be accepted by Eonasdan
-      def hacking_dataToOptions_bug
-        gsub_file 'vendor/assets/javascripts/bootstrap-datetimepicker.js',
-                  /dataOptions\s=\s\{\}\;\s/,
-                  <<-FILE
-dataOptions = {};
-
-                if (element.is('input')) {
-                    eData = element.data();
-                } else {
-                    eData = element.find('input').data();
-                }
-        FILE
-      end
-
     private
 
       def get_icons

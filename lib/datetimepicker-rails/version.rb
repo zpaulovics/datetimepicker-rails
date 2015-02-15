@@ -1,5 +1,5 @@
 module Datetimepicker
   module Rails
-    VERSION = "4.0.0"
+    VERSION = "4.3.5"
   end
 end
