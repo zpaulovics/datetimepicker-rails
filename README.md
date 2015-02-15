@@ -14,24 +14,24 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline and crea
     - You can customise the picker's iconset to use the Font-Awesome icons (dafault: Glyphicon)
     - Easy to install and use in your projects
 
-### The current 4.0.0 version compatibility
+### The current 4.3.5 version compatibility
  - Ruby 2.2.0
  - Rails 4.2
  - Simpleform 3.1
  - Momentjs-rails 2.9
- - http://eonasdan.github.io/bootstrap-datetimepicker version 4.0.0
+ - http://eonasdan.github.io/bootstrap-datetimepicker version 4.3.5
 
 
 ### Branches
 
-Master & eonasdan branches, tags v4.0.0+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
+Master & eonasdan branches, tags v4.3.5+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches.
 
 Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - It is archived. No further development or maintenance.
 
 
 ### Dependency
 
-Versions v4.0.0+ has a dependency on the moment.js version 2.9+ javascript library (for details refer to: http://momentjs.com/). Includes the dependency reference in its Gemfile (gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails').
+Versions v4.3.5+ has a dependency on the moment.js version 2.9+ javascript library (for details refer to: http://momentjs.com/). Includes the dependency reference in its Gemfile (gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails').
 
 ### Credits and references
 
@@ -251,8 +251,9 @@ The default values of the options:
             horizontal: 'auto',
             vertical: 'auto'
         },
-        widgetParent: null,
-        keepOpen: false
+        disallowReadOnly: true,
+        keepOpen: false,
+        inline: false
 ```
 For more details, please refer to Bootstrap 3 Datepicker v4 Docs site:
   - [for public API documentation](http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs)
