@@ -44,7 +44,7 @@ The project home page: https://github.com/zpaulovics/datetimepicker-rails.git
 
 According your needs, add one of the lines below to your application's Gemfile:
 
-**Option 1:** Master & eonasdan branches, tags v4.0.0+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches:
+**Option 1:** Master & eonasdan branches, tags v4+: Bootstrap 3+, Rails 4+ and SimpleForm 3.1+ (using https://github.com/eonasdan/bootstrap-datetimepicker.git as submodule, well maintained repo). Any further development will be made on these branches:
 
 ``` bash
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
@@ -73,7 +73,7 @@ or
 
 Add the following lines to app/assets/javascripts/application.js
 
-For version 4.0.0+:
+For version 4+:
 
 ```javascript
 //= require moment
@@ -159,7 +159,7 @@ Just call datetimepicker() with any selector.
 
 The scripts below will be included when you use the "require pickers" (for version v4.0.0+) or "require bootstrap-datetimepicker/pickers" (for version v1.0.0). If you need different activation scripts, ignore the //= require pickers (for version v4.0.0+) or //= require bootstrap-datetimepicker/pickers (for version v1.0.0) line in app/assets/javascripts/application.js.
 
-Version 4.0.0+:
+Version 4.3.5+:
 
 ```javascript
 var default_picker_options = {
@@ -330,27 +330,6 @@ See the documentation & excellent demos provided by plugin's authors:
 1. for current version: by [@Eonasdan](https://github.com/Eonasdan) the documentation is [here](http://eonasdan.github.io/bootstrap-datetimepicker/),
 
 2. for version v1.0.0: by [@tarruda](https://github.com/tarruda) the documentation is [here](http://tarruda.github.com/bootstrap-datetimepicker/).
-
-
-### Bugfix - dataToOptions function in the bootstrap-datetimepicker.js
-
-This SimpleForm custom field implementation use the data-date-* attributes feature of bootstrap-datetimepicker, but there is a bug in dataToOptions function.
-
-The generator has a patch to fix this issue. It finds above code in the in the bootstrap-datetimepicker.js
-```
-	dataToOptions = function () {
-		var eData = element.data(),
-		dataOptions = {};
-```
-Then inserts the lines below:
-```
-		if (element.is('input')) {
- 			eData = element.data();
- 		} else {
- 			eData = element.find('input').data();
-		}
-```
-A pull request has been raised to fix this issue. As soon as it will be accepted this hacking will be removed.
 
 
 ### Contributing
