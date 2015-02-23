@@ -157,6 +157,13 @@ Just call datetimepicker() with any selector.
 </div>
 ```
 
+Options can be passed from SimpleForm (from version 4.6.10 or later)
+```html
+    <%= f.input :date_field, as: :date_picker, :label => 'Date field',
+                input_html: {data: {date_options: {defaultDate: '2012/12/25'}}} %>
+```
+
+
 The scripts below will be included when you use the "require pickers" (for version v4.0.0+) or "require bootstrap-datetimepicker/pickers" (for version v1.0.0). If you need different activation scripts, ignore the //= require pickers (for version v4.0.0+) or //= require bootstrap-datetimepicker/pickers (for version v1.0.0) line in app/assets/javascripts/application.js.
 
 Version 4.3.5+:

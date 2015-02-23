@@ -7,12 +7,14 @@ class DatetimePickerInput < SimpleForm::Inputs::StringInput
     input_html_options[:type] = 'text'
     picker_pattern = I18n.t('datepicker.pformat', :default => 'DD/MM/YYYY') + ' ' + I18n.t('timepicker.pformat', :default => 'HH:mm')
     dayViewHeaderFormat = I18n.t('dayViewHeaderFormat', :default => 'MMMM YYYY')
-    date_options = {
-        locale: I18n.locale.to_s,
-        dayViewHeaderFormat: dayViewHeaderFormat,
-        format: picker_pattern
-    }
+
     input_html_options[:data] ||= {}
+    date_options = input_html_options[:data][:date_options] || {}
+    date_options.merge!({
+                            locale: I18n.locale.to_s,
+                            dayViewHeaderFormat: dayViewHeaderFormat,
+                            format: picker_pattern
+                        })
     input_html_options[:data].merge!({date_options: date_options })
 
     template.content_tag :div, class: 'input-group date datetimepicker' do
