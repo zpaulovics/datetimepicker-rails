@@ -15,7 +15,8 @@ module DatetimepickerRails
           previous: 'fa fa-chevron-left',
           next: 'fa fa-chevron-right',
           today: 'fa fa-crosshairs',
-          clear: 'fa fa-trash-o'
+          clear: 'fa fa-trash-o',
+          close: 'fa fa-times'
       }
 
       def source_path
@@ -140,7 +141,8 @@ $(document).on('ready page:change', function() {
         icons += "      previous: \'#{options[:custom_icons][:previous]}\',\n"
         icons += "      next: \'#{options[:custom_icons][:next]}\',\n"
         icons += "      today: \'#{options[:custom_icons][:today]}\',\n"
-        icons += "      clear: \'#{options[:custom_icons][:clear]}\'\n"
+        icons += "      clear: \'#{options[:custom_icons][:clear]}\',\n"
+        icons += "      close: \'#{options[:custom_icons][:close]}\'\n"
         icons += "    }\n"
       end
 

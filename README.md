@@ -237,7 +237,8 @@ The default values of the options:
             previous: 'glyphicon glyphicon-chevron-left',
             next: 'glyphicon glyphicon-chevron-right',
             today: 'glyphicon glyphicon-screenshot',
-            clear: 'glyphicon glyphicon-trash'
+            clear: 'glyphicon glyphicon-trash',
+            close: 'glyphicon glyphicon-remove'
         },
         useStrict: false,
         sideBySide: false,
@@ -247,13 +248,16 @@ The default values of the options:
         toolbarPlacement: 'default',
         showTodayButton: false,
         showClear: false,
+        showClose: false,
         widgetPositioning: {
             horizontal: 'auto',
             vertical: 'auto'
         },
-        disallowReadOnly: true,
+        widgetParent: null,
+        ignoreReadonly: false,
         keepOpen: false,
-        inline: false
+        inline: false,
+        keepInvalid: false,
 ```
 For more details, please refer to Bootstrap 3 Datepicker v4 Docs site:
   - [for public API documentation](http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs)
