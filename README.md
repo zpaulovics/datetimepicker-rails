@@ -14,12 +14,12 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline and crea
     - You can customise the picker's iconset to use the Font-Awesome icons (dafault: Glyphicon)
     - Easy to install and use in your projects
 
-### The current 4.3.5 version compatibility
+### The current 4.6.10 version compatibility
  - Ruby 2.2.0
  - Rails 4.2
  - Simpleform 3.1
  - Momentjs-rails 2.9
- - http://eonasdan.github.io/bootstrap-datetimepicker version 4.3.5
+ - http://eonasdan.github.io/bootstrap-datetimepicker version 4.6.10
 
 
 ### Branches
