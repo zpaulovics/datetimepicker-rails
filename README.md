@@ -31,7 +31,10 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - It is archived. N
 
 ### Dependency
 
-Versions v4.3.5+ has a dependency on the moment.js version 2.9+ javascript library (for details refer to: http://momentjs.com/). Includes the dependency reference in its Gemfile (gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails').
+Versions v4.3.5+ has a dependency on the moment.js version 2.9+ javascript library (for details refer to: http://momentjs.com/). Includes the dependency reference in yours Gemfile:
+``` bash
+gem 'momentjs-rails', '~> 2.9',  github: 'derekprior/momentjs-rails'
+```
 
 ### Credits and references
 
