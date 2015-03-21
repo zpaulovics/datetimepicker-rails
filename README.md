@@ -249,6 +249,7 @@ The default values of the options:
         widgetParent: null,
         ignoreReadonly: false,
         keepOpen: false,
+        focusOnShow: true,
         inline: false,
         keepInvalid: false,
         datepickerInput: '.datepickerinput'
