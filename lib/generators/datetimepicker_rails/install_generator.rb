@@ -65,7 +65,7 @@ module DatetimepickerRails
 $(document).on('ready page:change', function() {
   $('.datetimepicker').datetimepicker({
     // put here your custom picker options, that should be applied for all pickers
-    #{icons}
+#{icons}
   });
 
   $('.datetimerange').each(function(){
@@ -138,7 +138,7 @@ $(document).on('ready page:change', function() {
         icons += "      today: \'#{options[:custom_icons][:today]}\',\n"
         icons += "      clear: \'#{options[:custom_icons][:clear]}\',\n"
         icons += "      close: \'#{options[:custom_icons][:close]}\'\n"
-        icons += "    }\n"
+        icons += "    }"
       end
 
     end
