@@ -14,12 +14,12 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline and crea
     - You can customise the picker's iconset to use the Font-Awesome icons (dafault: Glyphicon)
     - Easy to install and use in your projects
 
-### The current 4.6.10 version compatibility
+### The current 4.7.15 version compatibility
  - Ruby 2.2.0
  - Rails 4.2
  - Simpleform 3.1
  - Momentjs-rails 2.9
- - http://eonasdan.github.io/bootstrap-datetimepicker version 4.6.10
+ - http://eonasdan.github.io/bootstrap-datetimepicker version 4.7.15
 
 
 ### Branches
@@ -337,7 +337,7 @@ This should be applied for any version.
 
 ### For more details of usage
 
-[You can find a demo application using the datetimeoicker-rails gem here] (https://github.com/zpaulovics/dateTimeDemo)
+[You can find a demo application using the datetimepicker-rails gem here] (https://github.com/zpaulovics/dateTimeDemo)
 
 
 See the documentation & excellent demos provided by plugin's authors:
@@ -353,4 +353,4 @@ See the documentation & excellent demos provided by plugin's authors:
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+5. Create new Pull Request (PR request need to be submitted to the development branch)
