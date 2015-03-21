@@ -14,12 +14,12 @@ This gem packages the bootstrap-datetimepicker for Rails asset pipeline and crea
     - You can customise the picker's iconset to use the Font-Awesome icons (dafault: Glyphicon)
     - Easy to install and use in your projects
 
-### The current 4.3.5 version compatibility
+### The current 4.7.15 version compatibility
  - Ruby 2.2.0
  - Rails 4.2
  - Simpleform 3.1
  - Momentjs-rails 2.9
- - http://eonasdan.github.io/bootstrap-datetimepicker version 4.3.5
+ - http://eonasdan.github.io/bootstrap-datetimepicker version 4.7.15
 
 
 ### Branches
@@ -31,7 +31,11 @@ Tag v1.0.0: Rails 3.2, Bootstrap 2.3.2 & SimpleForm >= 2.0.4 - It is archived. N
 
 ### Dependency
 
-Versions v4.3.5+ has a dependency on the moment.js version 2.9+ javascript library (for details refer to: http://momentjs.com/). Includes the dependency reference in its Gemfile (gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails').
+Versions v4.3.5+ has a dependency on the moment.js version 2.9+ javascript library (for details refer to: http://momentjs.com/). Includes the dependency reference in its Gemfile:
+``` bash
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+```
+
 
 ### Credits and references
 
@@ -157,6 +161,13 @@ Just call datetimepicker() with any selector.
 </div>
 ```
 
+Options can be passed from SimpleForm (from version 4.6.10 or later)
+```html
+    <%= f.input :date_field, as: :date_picker, :label => 'Date field',
+                input_html: {data: {date_options: {defaultDate: '2012/12/25'}}} %>
+```
+
+
 The scripts below will be included when you use the "require pickers" (for version v4.0.0+) or "require bootstrap-datetimepicker/pickers" (for version v1.0.0). If you need different activation scripts, ignore the //= require pickers (for version v4.0.0+) or //= require bootstrap-datetimepicker/pickers (for version v1.0.0) line in app/assets/javascripts/application.js.
 
 Version 4.3.5+:
@@ -237,7 +248,8 @@ The default values of the options:
             previous: 'glyphicon glyphicon-chevron-left',
             next: 'glyphicon glyphicon-chevron-right',
             today: 'glyphicon glyphicon-screenshot',
-            clear: 'glyphicon glyphicon-trash'
+            clear: 'glyphicon glyphicon-trash',
+            close: 'glyphicon glyphicon-remove'
         },
         useStrict: false,
         sideBySide: false,
@@ -247,13 +259,16 @@ The default values of the options:
         toolbarPlacement: 'default',
         showTodayButton: false,
         showClear: false,
+        showClose: false,
         widgetPositioning: {
             horizontal: 'auto',
             vertical: 'auto'
         },
-        disallowReadOnly: true,
+        widgetParent: null,
+        ignoreReadonly: false,
         keepOpen: false,
-        inline: false
+        inline: false,
+        keepInvalid: false,
 ```
 For more details, please refer to Bootstrap 3 Datepicker v4 Docs site:
   - [for public API documentation](http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs)
@@ -322,7 +337,7 @@ This should be applied for any version.
 
 ### For more details of usage
 
-[You can find a demo application using the datetimeoicker-rails gem here] (https://github.com/zpaulovics/dateTimeDemo)
+[You can find a demo application using the datetimepicker-rails gem here] (https://github.com/zpaulovics/dateTimeDemo)
 
 
 See the documentation & excellent demos provided by plugin's authors:
@@ -338,4 +353,4 @@ See the documentation & excellent demos provided by plugin's authors:
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+5. Create new Pull Request (PR request need to be submitted to the development branch)
