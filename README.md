@@ -170,31 +170,13 @@ Options can be passed from SimpleForm (from version 4.6.10 or later)
 
 The scripts below will be included when you use the "require pickers" (for version v4.0.0+) or "require bootstrap-datetimepicker/pickers" (for version v1.0.0). If you need different activation scripts, ignore the //= require pickers (for version v4.0.0+) or //= require bootstrap-datetimepicker/pickers (for version v1.0.0) line in app/assets/javascripts/application.js.
 
-Version 4.3.5+:
+Version 4.7.15+:
 
 ```javascript
-var default_picker_options = {
-  // put here your default options that should be applied for all pickers
-
-  // icons will be inserted if you run the generator with Font-Awesome parameter
-  icons: {
-    date: 'fa fa-calendar',
-    time: 'fa fa-clock-o',
-    up: 'fa fa-chevron-up',
-    down: 'fa fa-chevron-down',
-    previous: 'fa fa-chevron-left',
-    next: 'fa fa-chevron-right',
-    today: 'fa fa-crosshairs',
-    clear: 'fa fa-trash-o'
-  }
-}
-
 $(document).on('ready page:change', function() {
-  $('.datetimepicker').datetimepicker(default_picker_options);
-
-  $('.timepicker').datetimepicker(default_picker_options);
-
-  $('.datepicker').datetimepicker(default_picker_options);
+  $('.datetimepicker').datetimepicker({
+    // put here your custom picker options, that should be applied for all pickers
+  });
 
   $('.datetimerange').each(function(){
     var $this = $(this)
@@ -269,6 +251,7 @@ The default values of the options:
         keepOpen: false,
         inline: false,
         keepInvalid: false,
+        datepickerInput: '.datepickerinput'
 ```
 For more details, please refer to Bootstrap 3 Datepicker v4 Docs site:
   - [for public API documentation](http://eonasdan.github.io/bootstrap-datetimepicker/#bootstrap-3-datepicker-v4-docs)

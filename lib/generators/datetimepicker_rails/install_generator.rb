@@ -62,16 +62,11 @@ module DatetimepickerRails
         icons = icon_family == 'Glyphicon' ? '' : get_icons
 
         vendor 'assets/javascripts/pickers.js' do <<-FILE
-var default_picker_options = {
-#{icons}
-}
-
 $(document).on('ready page:change', function() {
-  $('.datetimepicker').datetimepicker(default_picker_options);
-
-  $('.timepicker').datetimepicker(default_picker_options);
-
-  $('.datepicker').datetimepicker(default_picker_options);
+  $('.datetimepicker').datetimepicker({
+    // put here your custom picker options, that should be applied for all pickers
+    #{icons}
+  });
 
   $('.datetimerange').each(function(){
     var $this = $(this)
