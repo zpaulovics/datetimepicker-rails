@@ -53,12 +53,14 @@ class DatePickerInput < SimpleForm::Inputs::StringInput
   def date_options_base
     {
         locale: I18n.locale.to_s,
-        format: picker_pattern
+        format: picker_pattern,
+        dayViewHeaderFormat: date_view_header_format
     }
   end
 
   def date_options
-    date_options_base.merge!({dayViewHeaderFormat: date_view_header_format})
+    custom_options = input_html_options[:data][:date_options] || {}
+    date_options_base.merge!(custom_options)
   end
 
 end
