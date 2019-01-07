@@ -98,6 +98,21 @@ For version v1.0.0:
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.hu
 ```
 
+#### Turbolinks
+
+If you are using the `turbolinks` gem, you should replace the
+
+```ruby
+$(document).on('read page:change'
+```
+
+with
+
+```ruby
+$(document).on('turbolinks:load'
+```
+
+in the `picker.js` file.
 
 ### Calling the generator
 
