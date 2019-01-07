@@ -102,13 +102,13 @@ For version v1.0.0:
 
 If you are using the `turbolinks` gem, you should replace the
 
-```ruby
+```javascript
 $(document).on('read page:change'
 ```
 
 with
 
-```ruby
+```javascript
 $(document).on('turbolinks:load'
 ```
 
